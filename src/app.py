@@ -1,6 +1,7 @@
 import os
 import logging
-from flask import Flask, abort, jsonify
+from flask import Flask, abort, jsonify, make_response
+
 from src import requester, rankings, results
 
 app = Flask(__name__)
@@ -9,6 +10,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 is_production = bool(os.environ.get('IS_PRODUCTION', default=False))
+
+
+@app.errorhandler(500)
+@app.errorhandler(503)
+def _handle_error(error):
+    return make_response(jsonify({
+        'error_msg': error.description,
+        'error_code': str(error.code),
+    }), error.code)
 
 
 @app.route('/v1/rankings', methods=['GET'])
