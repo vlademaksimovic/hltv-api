@@ -1,4 +1,6 @@
+import json
 import logging
+from random import randint
 from flask import abort
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
@@ -11,8 +13,7 @@ def request(url):
         logger.error('Missing URL argument')
         abort(500)
 
-    # TODO: Randomize headers
-    req = Request(url, headers={'User-Agent': 'Magic Browser'})
+    req = Request(url, headers={'User-Agent': _get_random_user_agent()})
     conn = urlopen(req)
     parsed_content = BeautifulSoup(conn.read(), 'html.parser')
 
@@ -21,3 +22,12 @@ def request(url):
         abort(503)
 
     return parsed_content
+
+
+def _get_random_user_agent():
+    # This will hopefully decrease the risk of getting blacklisted
+    with open('src/resources/user_agents.json', encoding='utf-8') as file:
+        user_agents = json.load(file)
+        count = len(user_agents)
+        random_int = randint(0, (count - 1))
+        return user_agents[random_int]
