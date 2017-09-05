@@ -30,7 +30,7 @@ def _rankings():
 
     return jsonify({
         'ranking': fetched_rankings,
-        'count': len(fetched_rankings),
+        'count': str(len(fetched_rankings)),
     })
 
 
@@ -43,7 +43,7 @@ def _results():
 
     return jsonify({
         'results': fetched_results,
-        'count': len(fetched_results),
+        'count': str(len(fetched_results)),
     })
 
 
