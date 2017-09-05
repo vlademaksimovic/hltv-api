@@ -1,8 +1,7 @@
 import os
 import logging
 from flask import Flask, abort, jsonify
-
-from src import requester, rankings
+from src import requester, rankings, results
 
 app = Flask(__name__)
 
@@ -19,7 +18,23 @@ def _rankings():
     if not fetched_rankings:
         abort(503)
 
-    return jsonify({'ranking': fetched_rankings})
+    return jsonify({
+        'ranking': fetched_rankings,
+        'count': len(fetched_rankings),
+    })
+
+
+@app.route('/v1/results', methods=['GET'])
+def _results():
+    fetched_results = results.get(requester)
+
+    if not fetched_results:
+        abort(503)
+
+    return jsonify({
+        'results': fetched_results,
+        'count': len(fetched_results),
+    })
 
 
 if __name__ == '__main__':
