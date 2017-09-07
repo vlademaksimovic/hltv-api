@@ -17,7 +17,7 @@ is_production = bool(os.environ.get('IS_PRODUCTION', default=False))
 
 
 @app.errorhandler(500)
-@app.errorhandler(503)
+@app.errorhandler(502)
 def _handle_error(error):
     return make_response(jsonify({
         'error_msg': error.description,
@@ -30,7 +30,7 @@ def _rankings():
     fetched_rankings = rankings.get(requester)
 
     if not fetched_rankings:
-        abort(503)
+        abort(502)
 
     return jsonify({
         'ranking': fetched_rankings,
@@ -43,7 +43,7 @@ def _results():
     fetched_results = results.get(requester)
 
     if not fetched_results:
-        abort(503)
+        abort(502)
 
     return jsonify({
         'results': fetched_results,

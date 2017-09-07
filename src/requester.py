@@ -19,7 +19,7 @@ def request(url):
 
     if not parsed_content:
         logger.error('Response is empty')
-        abort(503)
+        abort(502)
 
     return parsed_content
 
