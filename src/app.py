@@ -1,8 +1,12 @@
 import os
 import logging
-from flask import Flask, abort, jsonify, make_response
+from flask import Flask, abort, jsonify, make_response, request
 
-from src import requester, rankings, results
+from src import \
+    requester, \
+    rankings, \
+    results, \
+    matches
 
 app = Flask(__name__)
 
@@ -44,6 +48,20 @@ def _results():
     return jsonify({
         'results': fetched_results,
         'count': str(len(fetched_results)),
+    })
+
+
+@app.route('/v1/matches', methods=['GET'])
+def _matches():
+    match_filter = request.args.get('filter')
+    fetched_results = matches.get(requester, match_filter)
+
+    if not fetched_results:
+        abort(502)  # Bad gateway
+
+    return jsonify({
+        'matches': fetched_results,
+        'count': len(fetched_results),
     })
 
 
