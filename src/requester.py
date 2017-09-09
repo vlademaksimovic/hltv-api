@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def request(url):
     if not url:
         logger.error('Missing URL argument')
-        abort(500)
+        abort(500)  # Internal server error
 
     req = Request(url, headers={'User-Agent': _get_random_user_agent()})
     conn = urlopen(req)
@@ -19,7 +19,7 @@ def request(url):
 
     if not parsed_content:
         logger.error('Response is empty')
-        abort(502)
+        abort(502)  # Bad gateway
 
     return parsed_content
 

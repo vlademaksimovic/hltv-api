@@ -30,7 +30,7 @@ def _rankings():
     fetched_rankings = rankings.get(requester)
 
     if not fetched_rankings:
-        abort(502)
+        abort(502)  # Bad gateway
 
     return jsonify({
         'ranking': fetched_rankings,
@@ -43,7 +43,7 @@ def _results():
     fetched_results = results.get(requester)
 
     if not fetched_results:
-        abort(502)
+        abort(502)  # Bad gateway
 
     return jsonify({
         'results': fetched_results,
