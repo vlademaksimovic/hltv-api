@@ -65,5 +65,16 @@ def _matches():
     })
 
 
+@app.route('/', methods=['GET'])
+def _index():
+    return jsonify({
+        'author': 'Simon Egersand',
+        'author_url': 'https://github.com/simeg',
+        'base_url': 'http://hltv-api.herokuapp.com',
+        'project_name': 'HLTV API',
+        'project_url': 'https://github.com/simeg/hltv-api',
+    })
+
+
 if __name__ == '__main__':
     app.run(debug=not is_production)
