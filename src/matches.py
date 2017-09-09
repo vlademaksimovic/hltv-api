@@ -79,7 +79,8 @@ def _parse_live_match(match):
             'Unable to parse live match with exception followed by HTML:')
         logger.error(match)
         logger.error('#### END EXCEPTION ####')
-        pass
+
+        abort(500)  # Internal server error
 
 
 def _parse_map(map, t1_score, t2_score):
