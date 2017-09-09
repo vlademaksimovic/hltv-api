@@ -21,7 +21,7 @@ is_production = bool(os.environ.get('IS_PRODUCTION', default=False))
 def _handle_error(error):
     return make_response(jsonify({
         'error_msg': error.description,
-        'error_code': str(error.code),
+        'error_code': int(error.code),
     }), error.code)
 
 
@@ -34,7 +34,7 @@ def _rankings():
 
     return jsonify({
         'ranking': fetched_rankings,
-        'count': str(len(fetched_rankings)),
+        'count': len(fetched_rankings),
     })
 
 
@@ -47,7 +47,7 @@ def _results():
 
     return jsonify({
         'results': fetched_results,
-        'count': str(len(fetched_results)),
+        'count': len(fetched_results),
     })
 
 
