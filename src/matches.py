@@ -74,11 +74,11 @@ def _parse_live_match(match):
         }
 
     except Exception:
-        logger.exception('#### START EXCEPTION ####')
+        logger.error('#### START EXCEPTION ####')
         logger.exception(
             'Unable to parse live match with exception followed by HTML:')
-        logger.exception(match)
-        logger.exception('#### END EXCEPTION ####')
+        logger.error(match)
+        logger.error('#### END EXCEPTION ####')
         pass
 
 
