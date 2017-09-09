@@ -1,4 +1,8 @@
+from flask import abort
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 URL = 'https://www.hltv.org/ranking/teams'
 
@@ -15,16 +19,26 @@ def get(requester):
 
 
 def _parse_team(team):
-    name = team.select_one('span.name').get_text()
-    pos = team.select_one('span.position').get_text().replace('#', '')
-    points = _get_num(team.select_one('span.points').get_text())
+    try:
+        name = team.select_one('span.name').get_text()
+        pos = team.select_one('span.position').get_text().replace('#', '')
+        points = _extract_digits(team.select_one('span.points').get_text())
 
-    return {
-        'name': name,
-        'position': int(pos),
-        'points': int(points),
-    }
+        return {
+            'name': name,
+            'position': int(pos),
+            'points': int(points),
+        }
+
+    except Exception:
+        logger.error('#### START EXCEPTION ####')
+        logger.exception(
+            'Unable to parse live match with exception followed by HTML:')
+        logger.error(team)
+        logger.error('#### END EXCEPTION ####')
+
+        abort(500)  # Internal server error
 
 
-def _get_num(string):
+def _extract_digits(string):
     return re.findall('\d+', string)[0]
