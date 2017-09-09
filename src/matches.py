@@ -21,6 +21,7 @@ def get(requester, match_filter):
     if match_filter:
         filter_mapping = {
             'live': _filter_live,
+            'upcoming': _filter_upcoming,
         }
 
         if not filter_mapping[match_filter]:
@@ -38,15 +39,12 @@ def get(requester, match_filter):
         if len(upcoming_matches) == 0 or len(live_matches) == 0:
             return None
 
-        # Flatmap to transform [[],[]] to []
-        upcoming_matches = reduce(
-            list.__add__, list(map(_parse_match_days, upcoming_matches)))
+        upcoming_matches = _filter_upcoming(requester, upcoming_matches)
         live_matches = _filter_live(requester, live_matches)
-        live_matches = live_matches.get('live')
 
         return {
-            'live': live_matches,
-            'upcoming': upcoming_matches,
+            **upcoming_matches,
+            **live_matches,
         }
 
 
@@ -59,10 +57,11 @@ def _filter_live(requester, live_matches=None):
     if len(live_matches) == 0:
         return None
 
-    result = list(map(_parse_live_match, live_matches))
-    result = list(filter(lambda ele: ele is not None, result))
+    live_matches = list(map(_parse_live_match, live_matches))
+    live_matches = list(filter(lambda ele: ele is not None, live_matches))
+
     return {
-        'live': result,
+        'live': live_matches,
     }
 
 
@@ -124,20 +123,38 @@ def _parse_map(map, t1_score, t2_score):
     }
 
 
-def _parse_match_days(day_with_matches):
+def _filter_upcoming(requester, upcoming_matches=None):
+    if not upcoming_matches:
+        parsed_content = requester.request(MATCHES_URL)
+        upcoming_matches = parsed_content.find_all(
+            'div', attrs={'class': 'match-day'})
+
+    if len(upcoming_matches) == 0:
+        return None
+
+    # Flatmap to transform [[],[]] to []
+    upcoming_matches = reduce(
+        list.__add__, list(map(_parse_upcoming_matches, upcoming_matches)))
+
+    return {
+        'upcoming': upcoming_matches,
+    }
+
+
+def _parse_upcoming_matches(upcoming_matches):
     try:
         i = 0
         _results = []
-        date = _get_text(day_with_matches, 'span.standard-headline')
+        date = _get_text(upcoming_matches, 'span.standard-headline')
 
-        for match in _get_tags(day_with_matches, 'a.upcoming-match'):
+        for match in _get_tags(upcoming_matches, 'a.upcoming-match'):
             _result = {}
 
             time = _get_text(match, 'td.time')
             time = time.replace('\n', '')
 
             match_link = BASE_URL + _get_tags(
-                day_with_matches,
+                upcoming_matches,
                 'a.upcoming-match')[i].get('href')
             i += 1
 
@@ -176,7 +193,7 @@ def _parse_match_days(day_with_matches):
         logger.error('#### START EXCEPTION ####')
         logger.exception(
             'Unable to parse live match with exception followed by HTML:')
-        logger.error(day_with_matches)
+        logger.error(upcoming_matches)
         logger.error('#### END EXCEPTION ####')
 
         abort(500)  # Internal server error
