@@ -21,8 +21,8 @@ def _parse_team(team):
 
     return {
         'name': name,
-        'position': pos,
-        'points': points,
+        'position': int(pos),
+        'points': int(points),
     }
 
 

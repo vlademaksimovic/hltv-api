@@ -43,8 +43,8 @@ def _parse_results(single_day_results):
             score = score_tie.get_text()
 
             _result.update({
-                'score_lost': score,
-                'score_won': score,
+                'score_lost': int(score),
+                'score_won': int(score),
                 'result': 'tie',
             })
         else:
@@ -53,8 +53,8 @@ def _parse_results(single_day_results):
             score_lost = _get_text(match, 'td.result-score > span.score-lost')
 
             _result.update({
-                'score_lost': score_lost,
-                'score_won': score_won,
+                'score_lost': int(score_lost),
+                'score_won': int(score_won),
                 'winner': winner,
             })
 
