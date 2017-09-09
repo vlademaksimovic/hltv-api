@@ -33,7 +33,10 @@ def get(requester, match_filter):
         all_match_days = parsed_content.find_all(
             'div', attrs={'class': 'match-day'})
 
-        # Flatmap to not return [[],[]] but instead []
+        if len(all_match_days) == 0:
+            return None
+
+        # Flatmap to transform [[],[]] to []
         return reduce(
             list.__add__, list(map(_parse_match_days, all_match_days)))
 
@@ -42,6 +45,9 @@ def _filter_live(requester):
     parsed_content = requester.request(MATCHES_URL)
     all_live_matches = parsed_content.find_all(
         'div', attrs={'class': 'live-match'})
+
+    if len(all_live_matches) == 0:
+        return None
 
     result = list(map(_parse_live_match, all_live_matches))
     result = list(filter(lambda ele: ele is not None, result))
@@ -107,51 +113,61 @@ def _parse_map(map, t1_score, t2_score):
 
 
 def _parse_match_days(day_with_matches):
-    i = 0
-    _results = []
-    date = _get_text(day_with_matches, 'span.standard-headline')
+    try:
+        i = 0
+        _results = []
+        date = _get_text(day_with_matches, 'span.standard-headline')
 
-    for match in _get_tags(day_with_matches, 'a.upcoming-match'):
-        _result = {}
+        for match in _get_tags(day_with_matches, 'a.upcoming-match'):
+            _result = {}
 
-        time = _get_text(match, 'td.time')
-        time = time.replace('\n', '')
+            time = _get_text(match, 'td.time')
+            time = time.replace('\n', '')
 
-        match_link = BASE_URL + _get_tags(
-            day_with_matches,
-            'a.upcoming-match')[i].get('href')
-        i += 1
+            match_link = BASE_URL + _get_tags(
+                day_with_matches,
+                'a.upcoming-match')[i].get('href')
+            i += 1
 
-        # If placeholder match
-        if _get_tag(match, 'td.placeholder-text-cell'):
-            _results.append({
+            # If placeholder match
+            if _get_tag(match, 'td.placeholder-text-cell'):
+                _results.append({
+                    'date': date,
+                    'event': _get_text(match, 'td.placeholder-text-cell'),
+                    'match_link': match_link,
+                    'time': time,
+                })
+                continue
+
+            _teams = _get_tags(match, 'td.team-cell')
+            team1 = _get_text(_teams[0], 'div.team')
+            team2 = _get_text(_teams[1], 'div.team')
+
+            event = _get_text(match, 'td.event > span.event-name')
+            map = _get_text(match, 'td.star-cell div.map-text')
+
+            _result.update({
                 'date': date,
-                'event': _get_text(match, 'td.placeholder-text-cell'),
+                'event': event,
+                'map': map,
                 'match_link': match_link,
+                'team1': team1,
+                'team2': team2,
                 'time': time,
             })
-            continue
 
-        _teams = _get_tags(match, 'td.team-cell')
-        team1 = _get_text(_teams[0], 'div.team')
-        team2 = _get_text(_teams[1], 'div.team')
+            _results.append(_result)
 
-        event = _get_text(match, 'td.event > span.event-name')
-        map = _get_text(match, 'td.star-cell div.map-text')
+        return _results
 
-        _result.update({
-            'date': date,
-            'event': event,
-            'map': map,
-            'match_link': match_link,
-            'team1': team1,
-            'team2': team2,
-            'time': time,
-        })
+    except Exception:
+        logger.error('#### START EXCEPTION ####')
+        logger.exception(
+            'Unable to parse live match with exception followed by HTML:')
+        logger.error(day_with_matches)
+        logger.error('#### END EXCEPTION ####')
 
-        _results.append(_result)
-
-    return _results
+        abort(500)  # Internal server error
 
 
 def _get_tag(element, selector):
