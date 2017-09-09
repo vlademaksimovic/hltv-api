@@ -52,7 +52,7 @@ You might get a _500_ or _502_. See the [Error Responses](#error-responses) sect
 
 
 ## Upcoming Matches
-Returns data about the live as well as the upcoming matches.
+Returns data about the upcoming and live matches.
 
 ### URL
 `/v1/matches`
@@ -61,8 +61,8 @@ Returns data about the live as well as the upcoming matches.
 `GET`
 
 ### URL Parameters
-Use **filter** to get a subset of the upcoming matches.
-Available values: `live`
+Use **filter** to get the specific type of matches you want.
+Available values: `upcoming` | `live`
 
 Example:
 ```
@@ -73,19 +73,47 @@ Example:
 200 OK
 ```json
 {
-  "count": 348,
-  "matches": [
-    {
-      "date": "2017-09-09",
-      "event": "ESG Tour Mykonos 2017",
-      "map": "bo3",
-      "match_link": "https://www.hltv.org/matches/2314537/sk-vs-liquid-esg-tour-mykonos-2017",
-      "team1": "SK",
-      "team2": "Liquid",
-      "time": "19:30"
-    },
-    ...
-  ]
+  "count": 349,
+  "matches": {
+    "live": [
+      {
+        "event": "DreamHack Open Montreal 2017",
+        "maps": [
+          {
+            "name": "cch",
+            "team1_score": 16,
+            "team2_score": 12
+          },
+          {
+            "name": "trn",
+            "team1_score": 13,
+            "team2_score": 2
+          },
+          {
+            "name": "inf",
+            "team1_score": "-",
+            "team2_score": "-"
+          }
+        ],
+        "match_type": "Best of 3",
+        "team1": "Cloud9",
+        "team2": "Luminosity"
+      },
+      ...
+    ],
+    "upcoming": [
+      {
+        "date": "2017-09-10",
+        "event": "eXTREMESLAND 2017 Indonesia Regional Finals",
+        "map": "bo3",
+        "match_link": "https://www.hltv.org/matches/2314581/akara-vs-boom-extremesland-2017-indonesia-regional-finals",
+        "team1": "AKARA",
+        "team2": "BOOM",
+        "time": "05:00"
+      },
+      ...
+    ]
+  }
 }
 ```
 
