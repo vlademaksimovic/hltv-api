@@ -13,6 +13,9 @@ def get(requester):
     all_days_results = parsed_content.find_all(
         'div', attrs={'class': 'results-sublist'})
 
+    if len(all_days_results) == 0:
+        return None
+
     # Flatmap to not return [[],[]] but instead []
     return reduce(list.__add__, list(map(_parse_results, all_days_results)))
 
@@ -77,7 +80,6 @@ def _parse_results(single_day_results):
         logger.error('#### END EXCEPTION ####')
 
         abort(500)  # Internal server error
-
 
 
 def _get_tag(element, selector):
