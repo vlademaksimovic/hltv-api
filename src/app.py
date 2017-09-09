@@ -59,9 +59,15 @@ def _matches():
     if not fetched_results:
         abort(502)  # Bad gateway
 
+    # TODO: Put this logic inside matches.get()
+    upcoming_matches_count = len(fetched_results.get('upcoming')) \
+        if fetched_results.get('upcoming') else 0
+    live_matches_count = len(fetched_results.get('live')) \
+        if fetched_results.get('live') else 0
+
     return jsonify({
         'matches': fetched_results,
-        'count': len(fetched_results),
+        'count': (upcoming_matches_count + live_matches_count),
     })
 
 

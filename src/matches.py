@@ -30,28 +30,40 @@ def get(requester, match_filter):
 
     else:  # If no filter
         parsed_content = requester.request(MATCHES_URL)
-        all_match_days = parsed_content.find_all(
+        upcoming_matches = parsed_content.find_all(
             'div', attrs={'class': 'match-day'})
+        live_matches = parsed_content.find_all(
+            'div', attrs={'class': 'live-match'})
 
-        if len(all_match_days) == 0:
+        if len(upcoming_matches) == 0 or len(live_matches) == 0:
             return None
 
         # Flatmap to transform [[],[]] to []
-        return reduce(
-            list.__add__, list(map(_parse_match_days, all_match_days)))
+        upcoming_matches = reduce(
+            list.__add__, list(map(_parse_match_days, upcoming_matches)))
+        live_matches = _filter_live(requester, live_matches)
+        live_matches = live_matches.get('live')
+
+        return {
+            'live': live_matches,
+            'upcoming': upcoming_matches,
+        }
 
 
-def _filter_live(requester):
-    parsed_content = requester.request(MATCHES_URL)
-    all_live_matches = parsed_content.find_all(
-        'div', attrs={'class': 'live-match'})
+def _filter_live(requester, live_matches=None):
+    if not live_matches:
+        parsed_content = requester.request(MATCHES_URL)
+        live_matches = parsed_content.find_all(
+            'div', attrs={'class': 'live-match'})
 
-    if len(all_live_matches) == 0:
+    if len(live_matches) == 0:
         return None
 
-    result = list(map(_parse_live_match, all_live_matches))
+    result = list(map(_parse_live_match, live_matches))
     result = list(filter(lambda ele: ele is not None, result))
-    return result
+    return {
+        'live': result,
+    }
 
 
 def _parse_live_match(match):
