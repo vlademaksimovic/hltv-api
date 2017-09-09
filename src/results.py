@@ -1,4 +1,8 @@
 from functools import reduce
+from flask import abort
+import logging
+
+logger = logging.getLogger(__name__)
 
 BASE_URL = 'https://www.hltv.org'
 RESULTS_URL = BASE_URL + '/results'
@@ -14,53 +18,66 @@ def get(requester):
 
 
 def _parse_results(single_day_results):
-    _results = []
-    date = single_day_results.select_one('span.standard-headline') \
-        .get_text().replace('Results for ', '')
+    try:
+        _results = []
+        date = single_day_results.select_one('span.standard-headline') \
+            .get_text().replace('Results for ', '')
 
-    for match in single_day_results.select('div.result-con'):
-        _result = {}
+        for match in single_day_results.select('div.result-con'):
+            _result = {}
 
-        team1 = _get_text(match, 'div.team1 .team')
-        team2 = _get_text(match, 'div.team2 .team')
-        event = _get_text(match, 'td.event > span.event-name')
-        map = _get_text(match, 'td.star-cell div.map-text')
-        match_link = BASE_URL + _get_tag(match, 'a.a-reset').get('href')
-
-        _result.update({
-            'date': date,
-            'event': event,
-            'map': map,
-            'match_link': match_link,
-            'team1': team1,
-            'team2': team2,
-        })
-
-        # Result was a tie
-        score_tie = _get_tag(match, 'td.result-score > .score-tie')
-        if score_tie:
-            # Since it was a tie we know that the results are the same
-            score = score_tie.get_text()
+            team1 = _get_text(match, 'div.team1 .team')
+            team2 = _get_text(match, 'div.team2 .team')
+            event = _get_text(match, 'td.event > span.event-name')
+            map = _get_text(match, 'td.star-cell div.map-text')
+            match_link = BASE_URL + _get_tag(match, 'a.a-reset').get('href')
 
             _result.update({
-                'score_lost': int(score),
-                'score_won': int(score),
-                'result': 'tie',
-            })
-        else:
-            winner = _get_text(match, 'div.team.team-won')
-            score_won = _get_text(match, 'td.result-score > span.score-won')
-            score_lost = _get_text(match, 'td.result-score > span.score-lost')
-
-            _result.update({
-                'score_lost': int(score_lost),
-                'score_won': int(score_won),
-                'winner': winner,
+                'date': date,
+                'event': event,
+                'map': map,
+                'match_link': match_link,
+                'team1': team1,
+                'team2': team2,
             })
 
-        _results.append(_result)
+            # Result was a tie
+            score_tie = _get_tag(match, 'td.result-score > .score-tie')
+            if score_tie:
+                # Since it was a tie we know that the results are the same
+                score = score_tie.get_text()
 
-    return _results
+                _result.update({
+                    'score_lost': int(score),
+                    'score_won': int(score),
+                    'result': 'tie',
+                })
+            else:
+                winner = _get_text(match, 'div.team.team-won')
+                score_won = _get_text(
+                    match, 'td.result-score > span.score-won')
+                score_lost = _get_text(
+                    match, 'td.result-score > span.score-lost')
+
+                _result.update({
+                    'score_lost': int(score_lost),
+                    'score_won': int(score_won),
+                    'winner': winner,
+                })
+
+            _results.append(_result)
+
+        return _results
+
+    except Exception:
+        logger.error('#### START EXCEPTION ####')
+        logger.exception(
+            'Unable to parse result with exception followed by HTML:')
+        logger.error(single_day_results)
+        logger.error('#### END EXCEPTION ####')
+
+        abort(500)  # Internal server error
+
 
 
 def _get_tag(element, selector):
