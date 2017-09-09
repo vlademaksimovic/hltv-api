@@ -1,3 +1,6 @@
+# Travis cannot use 'pushd' or 'popd' without this
+SHELL := /bin/bash
+
 .PHONY: ci install start lint test
 
 ci: install lint test
