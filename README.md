@@ -1,4 +1,6 @@
-# HLTV API [![Support Python Version](https://img.shields.io/badge/python-3.6-blue.svg)](https://img.shields.io/badge/python-3.6-blue.svg) [![Build Status](https://travis-ci.org/simeg/hltv-api.svg?branch=master)](https://travis-ci.org/simeg/hltv-api)
+# HLTV API
+[![Support Python Version](https://img.shields.io/badge/python-3.6-blue.svg)](https://img.shields.io/badge/python-3.6-blue.svg) [![Build Status](https://travis-ci.org/simeg/hltv-api.svg?branch=master)](https://travis-ci.org/simeg/hltv-api)
+
 An unofficial API for [HLTV.org](HLTV.org). 
 
 # Table of Contents
