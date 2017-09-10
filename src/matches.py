@@ -82,8 +82,8 @@ def _parse_live_match(match):
         _maps = match.select('tr.header > td.map')
         _table_rows = match.select('table tr')
 
-        _score_team1 = _table_rows[1].select('td.mapscore')
-        _score_team2 = _table_rows[2].select('td.mapscore')
+        _score_team1 = _table_rows[1].select('td.mapscore span')
+        _score_team2 = _table_rows[2].select('td.mapscore span')
 
         map_results = list(map(_parse_map, _maps, _score_team1, _score_team2))
 
