@@ -17,10 +17,10 @@ BASE_URL = 'https://www.hltv.org'
 MATCHES_URL = BASE_URL + '/matches'
 
 
-def get(requester, match_filter=None):
-    if match_filter:
-        # _sanity_check(match_filter, limit)
+def get(requester, match_filter=None, limit=None):
+    _sanity_check(limit)
 
+    if match_filter:
         filter_mapping = {
             'live': _filter_live,
             'upcoming': _filter_upcoming,
@@ -29,13 +29,13 @@ def get(requester, match_filter=None):
         if not filter_mapping[match_filter]:
             abort(400)  # Bad request
 
-        return filter_mapping[match_filter](requester)
+        return filter_mapping[match_filter](requester, limit=limit)
 
     else:  # If no filter
         html_response = requester.request(MATCHES_URL)
 
-        upcoming_matches = _filter_upcoming(requester, html_response)
-        live_matches = _filter_live(requester, html_response)
+        upcoming_matches = _filter_upcoming(requester, html_response, limit)
+        live_matches = _filter_live(requester, html_response, limit)
 
         if len(upcoming_matches) == 0 or len(live_matches) == 0:
             abort(502)  # Bad gateway
@@ -46,12 +46,15 @@ def get(requester, match_filter=None):
         }
 
 
-def _filter_live(requester, html_response=None):
+def _filter_live(requester, html_response=None, limit=None):
     if not html_response:
         html_response = requester.request(MATCHES_URL)
 
+    if limit is None:
+        limit = 0
+
     live_matches = html_response.find_all(
-        'div', attrs={'class': 'live-match'})
+        'div', attrs={'class': 'live-match'}, limit=int(limit))
 
     if len(live_matches) == 0:
         abort(502)  # Bad gateway
@@ -122,7 +125,7 @@ def _parse_map(map, t1_score, t2_score):
     }
 
 
-def _filter_upcoming(requester, html_response=None):
+def _filter_upcoming(requester, html_response=None, limit=None):
     if not html_response:
         html_response = requester.request(MATCHES_URL)
 
@@ -134,6 +137,10 @@ def _filter_upcoming(requester, html_response=None):
 
     upcoming_matches = _flatmap(
         list(map(_parse_upcoming_matches, upcoming_matches)))
+
+    # TODO: Find an optimized way of limiting the response
+    if limit:
+        upcoming_matches = upcoming_matches[:int(limit)]
 
     return {
         'upcoming': upcoming_matches,
@@ -198,8 +205,20 @@ def _parse_upcoming_matches(upcoming_matches):
         abort(500)  # Internal server error
 
 
-def _sanity_check(match_filter, limit):
-    pass
+def _sanity_check(limit):
+    if limit is None:
+        return
+
+    try:
+        limit = int(limit)
+
+        if limit == 0:
+            abort(400, 'Limit parameter cannot be 0')  # Bad request
+
+    except TypeError and ValueError:
+        logger.exception('Unable to parse %s to integer' % str(limit))
+        # Bad request
+        abort(400, 'Limit parameter must be integer greater than 0')
 
 
 def _get_tag(element, selector):

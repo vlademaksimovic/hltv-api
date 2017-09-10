@@ -56,8 +56,9 @@ def _results():
 
 @app.route('/v1/matches', methods=['GET'])
 def _matches():
+    limit = request.args.get('limit')
     match_filter = request.args.get('filter')
-    fetched_results = matches.get(requester, match_filter)
+    fetched_results = matches.get(requester, match_filter, limit)
 
     upcoming_matches_count = len(fetched_results.get('upcoming')) \
         if fetched_results.get('upcoming') else 0

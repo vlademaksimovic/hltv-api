@@ -22,8 +22,7 @@ def get(requester, limit=None):
 
     # TODO: Find an optimized way of limiting the response
     if limit:
-        limit = int(limit)
-        results = results[:limit]
+        results = results[:int(limit)]
 
     return results
 
