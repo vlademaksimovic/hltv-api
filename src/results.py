@@ -8,7 +8,9 @@ BASE_URL = 'https://www.hltv.org'
 RESULTS_URL = BASE_URL + '/results'
 
 
-def get(requester):
+def get(requester, limit=None):
+    _sanity_check(limit)
+
     parsed_content = requester.request(RESULTS_URL)
     all_days_results = parsed_content.find_all(
         'div', attrs={'class': 'results-sublist'})
@@ -16,15 +18,21 @@ def get(requester):
     if len(all_days_results) == 0:
         return None
 
-    # Flatmap to not return [[],[]] but instead []
-    return reduce(list.__add__, list(map(_parse_results, all_days_results)))
+    results = _flatmap(list(map(_parse_results, all_days_results)))
+
+    # TODO: Find an optimized way of limiting the response
+    if limit:
+        limit = int(limit)
+        results = results[:limit]
+
+    return results
 
 
 def _parse_results(single_day_results):
     try:
         _results = []
-        date = single_day_results.select_one('span.standard-headline') \
-            .get_text().replace('Results for ', '')
+        date = single_day_results.select_one('span.standard-headline')
+        date = date.get_text().replace('Results for ', '')
 
         for match in single_day_results.select('div.result-con'):
             _result = {}
@@ -82,9 +90,30 @@ def _parse_results(single_day_results):
         abort(500)  # Internal server error
 
 
+def _sanity_check(limit):
+    if limit is None:
+        return
+
+    try:
+        limit = int(limit)
+
+        if limit == 0:
+            abort(400, 'Limit parameter cannot be 0')  # Bad request
+
+    except TypeError and ValueError:
+        logger.exception('Unable to parse %s to integer' % str(limit))
+        # Bad request
+        abort(400, 'Limit parameter must be integer greater than 0')
+
+
 def _get_tag(element, selector):
     return element.select_one(selector)
 
 
 def _get_text(element, selector):
     return _get_tag(element, selector).get_text()
+
+
+def _flatmap(input_list):
+    """[[a, b], [c, d]] -> [a, b, c, d]"""
+    return reduce(list.__add__, input_list)

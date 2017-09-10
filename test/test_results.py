@@ -21,6 +21,15 @@ class TestResults(unittest.TestCase):
 
         assert actual == expected
 
+    @mock.patch('src.requester.request', side_effect=_mock_response)
+    def test_limit_response(self, ignored):
+        actual = results.get(requester, '2')
+
+        with open('resources/mock_results.json', 'r') as file:
+            expected = json.loads(file.read())
+
+        assert actual == expected[:2]
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 is_production = bool(os.environ.get('IS_PRODUCTION', default=False))
 
 
+@app.errorhandler(400)
 @app.errorhandler(500)
 @app.errorhandler(502)
 def _handle_error(error):
@@ -41,7 +42,8 @@ def _rankings():
 
 @app.route('/v1/results', methods=['GET'])
 def _results():
-    fetched_results = results.get(requester)
+    limit = request.args.get('limit')
+    fetched_results = results.get(requester, limit)
 
     if not fetched_results:
         abort(502)  # Bad gateway
