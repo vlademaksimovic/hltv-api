@@ -43,10 +43,8 @@ def _rankings():
 @app.route('/v1/results', methods=['GET'])
 def _results():
     limit = request.args.get('limit')
-    fetched_results = results.get(requester, limit)
-
-    if not fetched_results:
-        abort(502)  # Bad gateway
+    offset = request.args.get('offset')
+    fetched_results = results.get(requester, limit, offset)
 
     return jsonify({
         'results': fetched_results,

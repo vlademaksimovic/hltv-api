@@ -8,15 +8,19 @@ BASE_URL = 'https://www.hltv.org'
 RESULTS_URL = BASE_URL + '/results'
 
 
-def get(requester, limit=None):
-    _sanity_check(limit)
+def get(requester, limit=None, offset=None):
+    _sanity_check(limit, 'limit')
+    _sanity_check(offset, 'offset')
 
-    parsed_content = requester.request(RESULTS_URL)
+    url = '%s?offset=%s' % (RESULTS_URL, str(offset)) if offset \
+        else RESULTS_URL
+
+    parsed_content = requester.request(url)
     all_days_results = parsed_content.find_all(
         'div', attrs={'class': 'results-sublist'})
 
     if len(all_days_results) == 0:
-        return None
+        abort(502)  # Bad gateway
 
     results = _flatmap(list(map(_parse_results, all_days_results)))
 
@@ -89,20 +93,19 @@ def _parse_results(single_day_results):
         abort(500)  # Internal server error
 
 
-def _sanity_check(limit):
-    if limit is None:
+def _sanity_check(param, name):
+    if param is None:
         return
 
     try:
-        limit = int(limit)
-
-        if limit == 0:
-            abort(400, 'Limit parameter cannot be 0')  # Bad request
+        param = int(param)
+        if param == 0:
+            abort(400, 'Parameter %s cannot be 0' % name)  # Bad request
 
     except TypeError and ValueError:
-        logger.exception('Unable to parse %s to integer' % str(limit))
+        logger.exception('Failed to parse %s to integer' % name)
         # Bad request
-        abort(400, 'Limit parameter must be integer greater than 0')
+        abort(400, 'Parameter %s must be integer greater than 0' % name)
 
 
 def _get_tag(element, selector):
