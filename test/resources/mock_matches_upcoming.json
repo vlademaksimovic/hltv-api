@@ -1,0 +1,775 @@
+{
+  "upcoming": [
+    {
+      "date": "2017-09-10",
+      "event": "ESG Tour Mykonos 2017",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314538/virtuspro-vs-sk-esg-tour-mykonos-2017",
+      "team1": "Virtus.pro",
+      "team2": "SK",
+      "time": "13:30"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "eXTREMESLAND 2017 Indonesia Regional Finals",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314583/boom-vs-recca-extremesland-2017-indonesia-regional-finals",
+      "team1": "BOOM",
+      "team2": "Recca",
+      "time": "13:30"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "cbl",
+      "match_url": "https://www.hltv.org/matches/2314265/dark-sided-vs-chiefs-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Dark Sided",
+      "team2": "Chiefs",
+      "time": "14:10"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "eXTREMESLAND 2017 Vietnam Regional Finals",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314689/vikings-vs-ultimate-24bhb-winner-extremesland-2017-vietnam-regional-finals",
+      "team1": "Vikings",
+      "team2": "Ultimate/24BHB winner",
+      "time": "14:30"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "Cross Border Esport 2017",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314698/extatus-vs-north-ac-tricked-winner-cross-border-esport-2017",
+      "team1": "eXtatus",
+      "team2": "North Ac/Tricked winner",
+      "time": "15:00"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "HyperX GOEXANIMO CS:GO 5x5 #5",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314694/wolsung-vs-superbia-hyperx-goexanimo-csgo-5x5-5",
+      "team1": "Wolsung",
+      "team2": "Superbia",
+      "time": "15:30"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "DreamHack Open Montreal 2017",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314557/immortals-vs-clg-dreamhack-open-montreal-2017",
+      "team1": "Immortals",
+      "team2": "CLG",
+      "time": "16:00"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "German Clash Season 2 Finals",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314666/wisewizards-vs-berzerk-divizon-loser-german-clash-season-2-finals",
+      "team1": "WiseWizards",
+      "team2": "Berzerk/DIVIZON loser",
+      "time": "16:00"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "ESG Tour Mykonos 2017",
+      "map": "bo5",
+      "match_url": "https://www.hltv.org/matches/2314539/mousesports-vs-liquid-esg-tour-mykonos-2017",
+      "team1": "mousesports",
+      "team2": "Liquid",
+      "time": "17:00"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "Vreecase Cup #1",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314695/volgare-vs-goodjob-vreecase-cup-1",
+      "team1": "volgare",
+      "team2": "GoodJob",
+      "time": "18:30"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "DreamHack Open Montreal 2017",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314558/north-vs-cloud9-dreamhack-open-montreal-2017",
+      "team1": "North",
+      "team2": "Cloud9",
+      "time": "19:00"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314334/ldlc-vs-kinguin-ecs-season-4-eu-development-league",
+      "team1": "LDLC",
+      "team2": "Kinguin",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-10",
+      "event": "DH Montreal Grand Final",
+      "match_url": "https://www.hltv.org/matches/2314559/dh-montreal-grand-final-dreamhack-open-montreal-2017",
+      "time": "23:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314246/tempo-storm-vs-splyce-ecs-season-4-na-development-league",
+      "team1": "Tempo Storm",
+      "team2": "Splyce",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314253/misfits-vs-rise-nation-ecs-season-4-na-development-league",
+      "team1": "Misfits",
+      "team2": "Rise Nation",
+      "time": "02:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314266/sin-vs-tainted-minds-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "SIN",
+      "team2": "Tainted Minds",
+      "time": "11:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314267/tainted-minds-vs-sin-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Tainted Minds",
+      "team2": "SIN",
+      "time": "12:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314268/athletico-vs-avant-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Athletico",
+      "team2": "AVANT",
+      "time": "13:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314269/avant-vs-athletico-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "AVANT",
+      "team2": "Athletico",
+      "time": "14:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "Vreecase Cup #1",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314696/nemiga-vs-ex-spartak-vreecase-cup-1",
+      "team1": "Nemiga",
+      "team2": "ex-Spartak",
+      "time": "15:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "WCA 2017 Europe Closed Qualifier",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314487/havu-vs-quantum-bellator-fire-wca-2017-europe-closed-qualifier",
+      "team1": "HAVU",
+      "team2": "Quantum Bellator Fire",
+      "time": "17:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "Hellcase Cup 6",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314667/spirit-vs-forze-hellcase-cup-6",
+      "team1": "Spirit",
+      "team2": "forZe",
+      "time": "18:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "Hellcase Cup 6",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314668/avangar-vs-spirit-hellcase-cup-6",
+      "team1": "AVANGAR",
+      "team2": "Spirit",
+      "time": "19:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "WCA 2017 Europe Closed Qualifier",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314488/singularity-vs-pride-wca-2017-europe-closed-qualifier",
+      "team1": "Singularity",
+      "team2": "PRIDE",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-11",
+      "event": "Hellcase Cup 6",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314669/avangar-vs-forze-hellcase-cup-6",
+      "team1": "AVANGAR",
+      "team2": "forZe",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-12",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314335/gambit-vs-fragsters-ecs-season-4-eu-development-league",
+      "team1": "Gambit",
+      "team2": "Fragsters",
+      "time": "18:00"
+    },
+    {
+      "date": "2017-09-12",
+      "event": "Mother Russia 1xBet",
+      "map": "bo3",
+      "match_url": "https://www.hltv.org/matches/2314565/singularity-vs-tricked-mother-russia-1xbet",
+      "team1": "Singularity",
+      "team2": "Tricked",
+      "time": "18:00"
+    },
+    {
+      "date": "2017-09-12",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313931/ldlc-vs-godsent-esl-pro-league-season-6-europe",
+      "team1": "LDLC",
+      "team2": "GODSENT",
+      "time": "19:00"
+    },
+    {
+      "date": "2017-09-12",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314336/gambit-vs-kinguin-ecs-season-4-eu-development-league",
+      "team1": "Gambit",
+      "team2": "Kinguin",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-12",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313932/godsent-vs-ldlc-esl-pro-league-season-6-europe",
+      "team1": "GODSENT",
+      "team2": "LDLC",
+      "time": "20:10"
+    },
+    {
+      "date": "2017-09-12",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313933/big-vs-heroic-esl-pro-league-season-6-europe",
+      "team1": "BIG",
+      "team2": "Heroic",
+      "time": "21:20"
+    },
+    {
+      "date": "2017-09-12",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313934/heroic-vs-big-esl-pro-league-season-6-europe",
+      "team1": "Heroic",
+      "team2": "BIG",
+      "time": "22:30"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314250/tempo-storm-vs-denial-ecs-season-4-na-development-league",
+      "team1": "Tempo Storm",
+      "team2": "Denial",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313845/rogue-vs-splyce-esl-pro-league-season-6-north-america",
+      "team1": "Rogue",
+      "team2": "Splyce",
+      "time": "01:00"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314255/rise-nation-vs-denial-ecs-season-4-na-development-league",
+      "team1": "Rise Nation",
+      "team2": "Denial",
+      "time": "02:00"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313846/splyce-vs-rogue-esl-pro-league-season-6-north-america",
+      "team1": "Splyce",
+      "team2": "Rogue",
+      "time": "02:10"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313847/nrg-vs-misfits-esl-pro-league-season-6-north-america",
+      "team1": "NRG",
+      "team2": "Misfits",
+      "time": "03:20"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313848/misfits-vs-nrg-esl-pro-league-season-6-north-america",
+      "team1": "Misfits",
+      "team2": "NRG",
+      "time": "04:30"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314337/heroic-vs-fragsters-ecs-season-4-eu-development-league",
+      "team1": "Heroic",
+      "team2": "Fragsters",
+      "time": "18:00"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313935/hellraisers-vs-ldlc-esl-pro-league-season-6-europe",
+      "team1": "HellRaisers",
+      "team2": "LDLC",
+      "time": "19:00"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314338/gambit-vs-tricked-ecs-season-4-eu-development-league",
+      "team1": "Gambit",
+      "team2": "Tricked",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313936/ldlc-vs-hellraisers-esl-pro-league-season-6-europe",
+      "team1": "LDLC",
+      "team2": "HellRaisers",
+      "time": "20:10"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313937/big-vs-godsent-esl-pro-league-season-6-europe",
+      "team1": "BIG",
+      "team2": "GODSENT",
+      "time": "21:20"
+    },
+    {
+      "date": "2017-09-13",
+      "event": "ESL Pro League Season 6 Europe",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313938/godsent-vs-big-esl-pro-league-season-6-europe",
+      "team1": "GODSENT",
+      "team2": "BIG",
+      "time": "22:30"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314252/denial-vs-splyce-ecs-season-4-na-development-league",
+      "team1": "Denial",
+      "team2": "Splyce",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313849/rogue-vs-ghost-esl-pro-league-season-6-north-america",
+      "team1": "Rogue",
+      "team2": "Ghost",
+      "time": "01:00"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314251/rise-nation-vs-splyce-ecs-season-4-na-development-league",
+      "team1": "Rise Nation",
+      "team2": "Splyce",
+      "time": "02:00"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313850/ghost-vs-rogue-esl-pro-league-season-6-north-america",
+      "team1": "Ghost",
+      "team2": "Rogue",
+      "time": "02:10"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313851/misfits-vs-splyce-esl-pro-league-season-6-north-america",
+      "team1": "Misfits",
+      "team2": "Splyce",
+      "time": "03:20"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ESL Pro League Season 6 North America",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2313852/splyce-vs-misfits-esl-pro-league-season-6-north-america",
+      "team1": "Splyce",
+      "team2": "Misfits",
+      "time": "04:30"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314339/heroic-vs-gambit-ecs-season-4-eu-development-league",
+      "team1": "Heroic",
+      "team2": "Gambit",
+      "time": "18:00"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314340/gambit-vs-ldlc-ecs-season-4-eu-development-league",
+      "team1": "Gambit",
+      "team2": "LDLC",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-14",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314344/fragsters-vs-ldlc-ecs-season-4-eu-development-league",
+      "team1": "Fragsters",
+      "team2": "LDLC",
+      "time": "22:00"
+    },
+    {
+      "date": "2017-09-15",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314243/tempo-storm-vs-rise-nation-ecs-season-4-na-development-league",
+      "team1": "Tempo Storm",
+      "team2": "Rise Nation",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-15",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314254/misfits-vs-french-canadians-ecs-season-4-na-development-league",
+      "team1": "Misfits",
+      "team2": "FRENCH CANADIANS",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-15",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314249/rise-nation-vs-rudys-players-club-ecs-season-4-na-development-league",
+      "team1": "Rise Nation",
+      "team2": "Rudy's Players Club",
+      "time": "02:00"
+    },
+    {
+      "date": "2017-09-15",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314341/space-soldiers-vs-gambit-ecs-season-4-eu-development-league",
+      "team1": "Space Soldiers",
+      "team2": "Gambit",
+      "time": "18:00"
+    },
+    {
+      "date": "2017-09-15",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314342/heroic-vs-tricked-ecs-season-4-eu-development-league",
+      "team1": "Heroic",
+      "team2": "Tricked",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-16",
+      "event": "ELEAGUE CS:GO Premier 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314496/north-vs-fnatic-eleague-csgo-premier-2017",
+      "team1": "North",
+      "team2": "fnatic",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-16",
+      "event": "ELEAGUE CS:GO Premier 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314497/mousesports-vs-immortals-eleague-csgo-premier-2017",
+      "team1": "mousesports",
+      "team2": "Immortals",
+      "time": "01:15"
+    },
+    {
+      "date": "2017-09-16",
+      "event": "ELEAGUE Group B Winners' Match",
+      "match_url": "https://www.hltv.org/matches/2314498/eleague-group-b-winners-match-eleague-csgo-premier-2017",
+      "time": "04:00"
+    },
+    {
+      "date": "2017-09-16",
+      "event": "ELEAGUE Group B Elimination Match",
+      "match_url": "https://www.hltv.org/matches/2314499/eleague-group-b-elimination-match-eleague-csgo-premier-2017",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-16",
+      "event": "ELEAGUE Group B Decider Match",
+      "match_url": "https://www.hltv.org/matches/2314500/eleague-group-b-decider-match-eleague-csgo-premier-2017",
+      "time": "22:30"
+    },
+    {
+      "date": "2017-09-17",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314270/grayhound-vs-athletico-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Grayhound",
+      "team2": "Athletico",
+      "time": "11:00"
+    },
+    {
+      "date": "2017-09-17",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314271/athletico-vs-grayhound-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Athletico",
+      "team2": "Grayhound",
+      "time": "12:00"
+    },
+    {
+      "date": "2017-09-17",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314272/chiefs-vs-sin-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Chiefs",
+      "team2": "SIN",
+      "time": "13:00"
+    },
+    {
+      "date": "2017-09-17",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314273/sin-vs-chiefs-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "SIN",
+      "team2": "Chiefs",
+      "time": "14:00"
+    },
+    {
+      "date": "2017-09-18",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314274/tainted-minds-vs-avant-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Tainted Minds",
+      "team2": "AVANT",
+      "time": "11:00"
+    },
+    {
+      "date": "2017-09-18",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314275/avant-vs-tainted-minds-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "AVANT",
+      "team2": "Tainted Minds",
+      "time": "12:00"
+    },
+    {
+      "date": "2017-09-18",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314276/dark-sided-vs-kings-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Dark Sided",
+      "team2": "Kings",
+      "time": "13:00"
+    },
+    {
+      "date": "2017-09-18",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314277/kings-vs-dark-sided-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Kings",
+      "team2": "Dark Sided",
+      "time": "14:00"
+    },
+    {
+      "date": "2017-09-20",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314238/misfits-vs-denial-ecs-season-4-na-development-league",
+      "team1": "Misfits",
+      "team2": "Denial",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-20",
+      "event": "ECS Season 4 EU Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314343/north-vs-heroic-ecs-season-4-eu-development-league",
+      "team1": "North",
+      "team2": "Heroic",
+      "time": "18:00"
+    },
+    {
+      "date": "2017-09-21",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314247/french-canadians-vs-rudys-players-club-ecs-season-4-na-development-league",
+      "team1": "FRENCH CANADIANS",
+      "team2": "Rudy's Players Club",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-21",
+      "event": "ECS Season 4 NA Development League",
+      "map": "bo2",
+      "match_url": "https://www.hltv.org/matches/2314242/misfits-vs-rudys-players-club-ecs-season-4-na-development-league",
+      "team1": "Misfits",
+      "team2": "Rudy's Players Club",
+      "time": "02:00"
+    },
+    {
+      "date": "2017-09-23",
+      "event": "ELEAGUE CS:GO Premier 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314501/virtuspro-vs-envyus-eleague-csgo-premier-2017",
+      "team1": "Virtus.pro",
+      "team2": "EnVyUs",
+      "time": "00:00"
+    },
+    {
+      "date": "2017-09-23",
+      "event": "ELEAGUE CS:GO Premier 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314502/cloud9-vs-nip-eleague-csgo-premier-2017",
+      "team1": "Cloud9",
+      "team2": "NiP",
+      "time": "01:15"
+    },
+    {
+      "date": "2017-09-23",
+      "event": "ELEAGUE Group C Winners' Match",
+      "match_url": "https://www.hltv.org/matches/2314503/eleague-group-c-winners-match-eleague-csgo-premier-2017",
+      "time": "04:00"
+    },
+    {
+      "date": "2017-09-23",
+      "event": "ELEAGUE Group C Elimination Match",
+      "match_url": "https://www.hltv.org/matches/2314504/eleague-group-c-elimination-match-eleague-csgo-premier-2017",
+      "time": "20:00"
+    },
+    {
+      "date": "2017-09-23",
+      "event": "ELEAGUE Group C Decider Match",
+      "match_url": "https://www.hltv.org/matches/2314505/eleague-group-c-decider-match-eleague-csgo-premier-2017",
+      "time": "22:30"
+    },
+    {
+      "date": "2017-09-24",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314278/tainted-minds-vs-athletico-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Tainted Minds",
+      "team2": "Athletico",
+      "time": "10:00"
+    },
+    {
+      "date": "2017-09-24",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314279/athletico-vs-tainted-minds-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Athletico",
+      "team2": "Tainted Minds",
+      "time": "11:00"
+    },
+    {
+      "date": "2017-09-24",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314280/chiefs-vs-avant-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Chiefs",
+      "team2": "AVANT",
+      "time": "12:00"
+    },
+    {
+      "date": "2017-09-24",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314281/avant-vs-chiefs-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "AVANT",
+      "team2": "Chiefs",
+      "time": "13:00"
+    },
+    {
+      "date": "2017-09-25",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314282/grayhound-vs-dark-sided-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Grayhound",
+      "team2": "Dark Sided",
+      "time": "10:00"
+    },
+    {
+      "date": "2017-09-25",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314283/dark-sided-vs-grayhound-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Dark Sided",
+      "team2": "Grayhound",
+      "time": "11:00"
+    },
+    {
+      "date": "2017-09-25",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314284/sin-vs-kings-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "SIN",
+      "team2": "Kings",
+      "time": "12:00"
+    },
+    {
+      "date": "2017-09-25",
+      "event": "AOC CyberGamer Premier League Spring 2017",
+      "map": "tba",
+      "match_url": "https://www.hltv.org/matches/2314285/kings-vs-sin-aoc-cybergamer-premier-league-spring-2017",
+      "team1": "Kings",
+      "team2": "SIN",
+      "time": "13:00"
+    }
+  ]
+}
