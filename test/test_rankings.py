@@ -23,7 +23,7 @@ class TestRankings(unittest.TestCase):
 
     @mock.patch('src.requester.request', side_effect=_mock_response)
     def test_limit_response(self, ignored):
-        actual = rankings.get(requester, 3)
+        actual = rankings.get(requester, '3')
 
         expected = json.loads(json.dumps(
             [{'name': 'SK', 'points': 886, 'position': 1},
