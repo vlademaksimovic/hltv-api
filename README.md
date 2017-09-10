@@ -35,7 +35,7 @@ Returns data about finished matches. By default it will return the 100 latest ma
       "date": "September 9th 2017",
       "event": "EPICENTER 2017 Europe Qualifier #2",
       "map": "inf",
-      "match_link": "https://www.hltv.org/matches/2314656/teamplay-vs-ex-outlaws-epicenter-2017-europe-qualifier-2",
+      "match_url": "https://www.hltv.org/matches/2314656/teamplay-vs-ex-outlaws-epicenter-2017-europe-qualifier-2",
       "score_lost": 8,
       "score_won": 6,
       "team1": "TEAMPLAY",
@@ -106,7 +106,7 @@ Example:
         "date": "2017-09-10",
         "event": "eXTREMESLAND 2017 Indonesia Regional Finals",
         "map": "bo3",
-        "match_link": "https://www.hltv.org/matches/2314581/akara-vs-boom-extremesland-2017-indonesia-regional-finals",
+        "match_url": "https://www.hltv.org/matches/2314581/akara-vs-boom-extremesland-2017-indonesia-regional-finals",
         "team1": "AKARA",
         "team2": "BOOM",
         "time": "05:00"

@@ -153,7 +153,7 @@ def _parse_upcoming_matches(upcoming_matches):
             time = _get_text(match, 'td.time')
             time = time.replace('\n', '')
 
-            match_link = BASE_URL + _get_tags(
+            match_url = BASE_URL + _get_tags(
                 upcoming_matches,
                 'a.upcoming-match')[i].get('href')
             i += 1
@@ -163,7 +163,7 @@ def _parse_upcoming_matches(upcoming_matches):
                 _results.append({
                     'date': date,
                     'event': _get_text(match, 'td.placeholder-text-cell'),
-                    'match_link': match_link,
+                    'match_url': match_url,
                     'time': time,
                 })
                 continue
@@ -179,7 +179,7 @@ def _parse_upcoming_matches(upcoming_matches):
                 'date': date,
                 'event': event,
                 'map': map,
-                'match_link': match_link,
+                'match_url': match_url,
                 'team1': team1,
                 'team2': team2,
                 'time': time,
