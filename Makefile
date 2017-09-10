@@ -1,7 +1,7 @@
 # Travis cannot use 'pushd' or 'popd' without this
 SHELL := /bin/bash
 
-.PHONY: ci install start lint test
+.PHONY: ci install start lint test test-cov
 
 ci: install lint test
 
@@ -16,3 +16,6 @@ lint:
 
 test:
 	pushd test; pytest; popd
+
+test-cov:
+	pushd test; py.test --cov-report=html:../coverage --cov-report=term --no-cov-on-fail --cov src; popd
