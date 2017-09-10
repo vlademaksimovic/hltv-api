@@ -17,7 +17,7 @@ BASE_URL = 'https://www.hltv.org'
 MATCHES_URL = BASE_URL + '/matches'
 
 
-def get(requester, match_filter):
+def get(requester, match_filter=None):
     if match_filter:
         filter_mapping = {
             'live': _filter_live,
