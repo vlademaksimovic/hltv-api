@@ -19,6 +19,8 @@ MATCHES_URL = BASE_URL + '/matches'
 
 def get(requester, match_filter=None):
     if match_filter:
+        # _sanity_check(match_filter, limit)
+
         filter_mapping = {
             'live': _filter_live,
             'upcoming': _filter_upcoming,
@@ -30,17 +32,13 @@ def get(requester, match_filter=None):
         return filter_mapping[match_filter](requester)
 
     else:  # If no filter
-        parsed_content = requester.request(MATCHES_URL)
-        upcoming_matches = parsed_content.find_all(
-            'div', attrs={'class': 'match-day'})
-        live_matches = parsed_content.find_all(
-            'div', attrs={'class': 'live-match'})
+        html_response = requester.request(MATCHES_URL)
+
+        upcoming_matches = _filter_upcoming(requester, html_response)
+        live_matches = _filter_live(requester, html_response)
 
         if len(upcoming_matches) == 0 or len(live_matches) == 0:
-            return None
-
-        upcoming_matches = _filter_upcoming(requester, upcoming_matches)
-        live_matches = _filter_live(requester, live_matches)
+            abort(502)  # Bad gateway
 
         return {
             **upcoming_matches,
@@ -48,14 +46,15 @@ def get(requester, match_filter=None):
         }
 
 
-def _filter_live(requester, live_matches=None):
-    if not live_matches:
-        parsed_content = requester.request(MATCHES_URL)
-        live_matches = parsed_content.find_all(
-            'div', attrs={'class': 'live-match'})
+def _filter_live(requester, html_response=None):
+    if not html_response:
+        html_response = requester.request(MATCHES_URL)
+
+    live_matches = html_response.find_all(
+        'div', attrs={'class': 'live-match'})
 
     if len(live_matches) == 0:
-        return None
+        abort(502)  # Bad gateway
 
     live_matches = list(map(_parse_live_match, live_matches))
     live_matches = list(filter(lambda ele: ele is not None, live_matches))
@@ -123,18 +122,18 @@ def _parse_map(map, t1_score, t2_score):
     }
 
 
-def _filter_upcoming(requester, upcoming_matches=None):
-    if not upcoming_matches:
-        parsed_content = requester.request(MATCHES_URL)
-        upcoming_matches = parsed_content.find_all(
-            'div', attrs={'class': 'match-day'})
+def _filter_upcoming(requester, html_response=None):
+    if not html_response:
+        html_response = requester.request(MATCHES_URL)
+
+    upcoming_matches = html_response.find_all(
+        'div', attrs={'class': 'match-day'})
 
     if len(upcoming_matches) == 0:
-        return None
+        abort(502)  # Bad gateway
 
-    # Flatmap to transform [[],[]] to []
-    upcoming_matches = reduce(
-        list.__add__, list(map(_parse_upcoming_matches, upcoming_matches)))
+    upcoming_matches = _flatmap(
+        list(map(_parse_upcoming_matches, upcoming_matches)))
 
     return {
         'upcoming': upcoming_matches,
@@ -199,6 +198,10 @@ def _parse_upcoming_matches(upcoming_matches):
         abort(500)  # Internal server error
 
 
+def _sanity_check(match_filter, limit):
+    pass
+
+
 def _get_tag(element, selector):
     return element.select_one(selector)
 
@@ -209,3 +212,8 @@ def _get_tags(element, selector):
 
 def _get_text(element, selector):
     return _get_tag(element, selector).get_text()
+
+
+def _flatmap(input_list):
+    """[[a, b], [c, d]] -> [a, b, c, d]"""
+    return reduce(list.__add__, input_list)

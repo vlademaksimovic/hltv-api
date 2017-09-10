@@ -59,9 +59,6 @@ def _matches():
     match_filter = request.args.get('filter')
     fetched_results = matches.get(requester, match_filter)
 
-    if not fetched_results:
-        abort(502)  # Bad gateway
-
     upcoming_matches_count = len(fetched_results.get('upcoming')) \
         if fetched_results.get('upcoming') else 0
     live_matches_count = len(fetched_results.get('live')) \
