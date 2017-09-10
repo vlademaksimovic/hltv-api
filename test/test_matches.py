@@ -16,9 +16,14 @@ def _mock_upcoming_response(*args, **kwargs):
         return BeautifulSoup(file.read(), 'html.parser')
 
 
+def _mock_matches_response(*args, **kwargs):
+    with open('resources/mock_matches.html', 'r') as file:
+        return BeautifulSoup(file.read(), 'html.parser')
+
+
 class TestMatches(unittest.TestCase):
     @mock.patch('src.requester.request', side_effect=_mock_live_response)
-    def test_live_filter_correct_response(self, ignored):
+    def test_live_correct_response(self, ignored):
         actual = matches.get(requester, 'live')
 
         with open('resources/mock_matches_live.json', 'r') as file:
@@ -27,10 +32,19 @@ class TestMatches(unittest.TestCase):
         assert actual == expected
 
     @mock.patch('src.requester.request', side_effect=_mock_upcoming_response)
-    def test_upcoming_filter_correct_response(self, ignored):
+    def test_upcoming_correct_response(self, ignored):
         actual = matches.get(requester, 'upcoming')
 
         with open('resources/mock_matches_upcoming.json', 'r') as file:
+            expected = json.loads(file.read())
+
+        assert actual == expected
+
+    @mock.patch('src.requester.request', side_effect=_mock_matches_response)
+    def test_matches_correct_response(self, ignored):
+        actual = matches.get(requester)
+
+        with open('resources/mock_matches.json', 'r') as file:
             expected = json.loads(file.read())
 
         assert actual == expected
