@@ -7,7 +7,7 @@
       "match_url": "https://www.hltv.org/matches/2314538/virtuspro-vs-sk-esg-tour-mykonos-2017",
       "team1": "Virtus.pro",
       "team2": "SK",
-      "time": "13:30"
+      "start_time": "13:30"
     },
     {
       "date": "2017-09-10",
@@ -16,7 +16,7 @@
       "match_url": "https://www.hltv.org/matches/2314583/boom-vs-recca-extremesland-2017-indonesia-regional-finals",
       "team1": "BOOM",
       "team2": "Recca",
-      "time": "13:30"
+      "start_time": "13:30"
     },
     {
       "date": "2017-09-10",
@@ -25,7 +25,7 @@
       "match_url": "https://www.hltv.org/matches/2314265/dark-sided-vs-chiefs-aoc-cybergamer-premier-league-spring-2017",
       "team1": "Dark Sided",
       "team2": "Chiefs",
-      "time": "14:10"
+      "start_time": "14:10"
     },
     {
       "date": "2017-09-10",
@@ -34,7 +34,7 @@
       "match_url": "https://www.hltv.org/matches/2314689/vikings-vs-ultimate-24bhb-winner-extremesland-2017-vietnam-regional-finals",
       "team1": "Vikings",
       "team2": "Ultimate/24BHB winner",
-      "time": "14:30"
+      "start_time": "14:30"
     },
     {
       "date": "2017-09-10",
@@ -43,7 +43,7 @@
       "match_url": "https://www.hltv.org/matches/2314698/extatus-vs-north-ac-tricked-winner-cross-border-esport-2017",
       "team1": "eXtatus",
       "team2": "North Ac/Tricked winner",
-      "time": "15:00"
+      "start_time": "15:00"
     },
     {
       "date": "2017-09-10",
@@ -52,7 +52,7 @@
       "match_url": "https://www.hltv.org/matches/2314694/wolsung-vs-superbia-hyperx-goexanimo-csgo-5x5-5",
       "team1": "Wolsung",
       "team2": "Superbia",
-      "time": "15:30"
+      "start_time": "15:30"
     },
     {
       "date": "2017-09-10",
@@ -61,7 +61,7 @@
       "match_url": "https://www.hltv.org/matches/2314557/immortals-vs-clg-dreamhack-open-montreal-2017",
       "team1": "Immortals",
       "team2": "CLG",
-      "time": "16:00"
+      "start_time": "16:00"
     },
     {
       "date": "2017-09-10",
@@ -70,7 +70,7 @@
       "match_url": "https://www.hltv.org/matches/2314666/wisewizards-vs-berzerk-divizon-loser-german-clash-season-2-finals",
       "team1": "WiseWizards",
       "team2": "Berzerk/DIVIZON loser",
-      "time": "16:00"
+      "start_time": "16:00"
     },
     {
       "date": "2017-09-10",
@@ -79,7 +79,7 @@
       "match_url": "https://www.hltv.org/matches/2314539/mousesports-vs-liquid-esg-tour-mykonos-2017",
       "team1": "mousesports",
       "team2": "Liquid",
-      "time": "17:00"
+      "start_time": "17:00"
     },
     {
       "date": "2017-09-10",
@@ -88,7 +88,7 @@
       "match_url": "https://www.hltv.org/matches/2314695/volgare-vs-goodjob-vreecase-cup-1",
       "team1": "volgare",
       "team2": "GoodJob",
-      "time": "18:30"
+      "start_time": "18:30"
     },
     {
       "date": "2017-09-10",
@@ -97,7 +97,7 @@
       "match_url": "https://www.hltv.org/matches/2314558/north-vs-cloud9-dreamhack-open-montreal-2017",
       "team1": "North",
       "team2": "Cloud9",
-      "time": "19:00"
+      "start_time": "19:00"
     },
     {
       "date": "2017-09-10",
@@ -106,13 +106,13 @@
       "match_url": "https://www.hltv.org/matches/2314334/ldlc-vs-kinguin-ecs-season-4-eu-development-league",
       "team1": "LDLC",
       "team2": "Kinguin",
-      "time": "20:00"
+      "start_time": "20:00"
     },
     {
       "date": "2017-09-10",
       "event": "DH Montreal Grand Final",
       "match_url": "https://www.hltv.org/matches/2314559/dh-montreal-grand-final-dreamhack-open-montreal-2017",
-      "time": "23:00"
+      "start_time": "23:00"
     },
     {
       "date": "2017-09-11",
@@ -121,7 +121,7 @@
       "match_url": "https://www.hltv.org/matches/2314246/tempo-storm-vs-splyce-ecs-season-4-na-development-league",
       "team1": "Tempo Storm",
       "team2": "Splyce",
-      "time": "00:00"
+      "start_time": "00:00"
     }
   ]
 }
