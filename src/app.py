@@ -27,7 +27,8 @@ def _handle_error(error):
 
 @app.route('/v1/rankings', methods=['GET'])
 def _rankings():
-    fetched_rankings = rankings.get(requester)
+    limit = request.args.get('limit')
+    fetched_rankings = rankings.get(requester, limit)
 
     if not fetched_rankings:
         abort(502)  # Bad gateway

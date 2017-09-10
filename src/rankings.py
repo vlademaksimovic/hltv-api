@@ -7,10 +7,13 @@ logger = logging.getLogger(__name__)
 URL = 'https://www.hltv.org/ranking/teams'
 
 
-def get(requester):
-    parsed_content = requester.request(URL)
+def get(requester, limit=None):
+    if limit is None:
+        limit = 0
 
-    teams = parsed_content.find_all('div', attrs={'class': 'ranked-team'})
+    parsed_content = requester.request(URL)
+    teams = parsed_content.find_all(
+        'div', attrs={'class': 'ranked-team'}, limit=int(limit))
 
     if len(teams) == 0:
         return None

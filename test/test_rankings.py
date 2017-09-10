@@ -21,6 +21,17 @@ class TestRankings(unittest.TestCase):
 
         assert actual == expected
 
+    @mock.patch('src.requester.request', side_effect=_mock_response)
+    def test_limit_response(self, ignored):
+        actual = rankings.get(requester, 3)
+
+        expected = json.loads(json.dumps(
+            [{'name': 'SK', 'points': 886, 'position': 1},
+             {'name': 'G2', 'points': 737, 'position': 2},
+             {'name': 'Astralis', 'points': 670, 'position': 3}, ]))
+
+        assert actual == expected
+
 
 if __name__ == '__main__':
     unittest.main()
