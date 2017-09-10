@@ -59,7 +59,6 @@ def _matches():
     if not fetched_results:
         abort(502)  # Bad gateway
 
-    # TODO: Put this logic inside matches.get()
     upcoming_matches_count = len(fetched_results.get('upcoming')) \
         if fetched_results.get('upcoming') else 0
     live_matches_count = len(fetched_results.get('live')) \
@@ -79,6 +78,7 @@ def _index():
         'base_url': 'http://hltv-api.herokuapp.com',
         'project_name': 'HLTV API',
         'project_url': 'https://github.com/simeg/hltv-api',
+        'latest_version': 1,
     })
 
 
