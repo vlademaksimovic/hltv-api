@@ -25,7 +25,8 @@ Returns data about finished matches. By default it will return the 100 latest ma
 `GET`
 
 ### URL Parameters
-- TODO
+- `limit=[integer]` - Limit the number of items in the response
+- `offset=[integer]` - How many items to offset when reading from HLTV
 
 ### Success Response
 200 OK
@@ -50,7 +51,7 @@ Returns data about finished matches. By default it will return the 100 latest ma
 ```
 
 ### Error Response
-You might get a _500_ or _502_. See the [Error Responses](#error-responses) section for more information.
+_400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 
 ## Upcoming Matches
@@ -63,13 +64,8 @@ Returns data about the upcoming and live matches.
 `GET`
 
 ### URL Parameters
-Use **filter** to get the specific type of matches you want.
-Available values: `upcoming` | `live`
-
-Example:
-```
-/v1/matches?filter=live
-```
+- `limit=[integer]` - Limit the number of items in the response
+- `filter=[upcoming|live]` - Specify the type of match you want
 
 ### Success Response
 200 OK
@@ -120,7 +116,7 @@ Example:
 ```
 
 ### Error Response
-You might get a _500_ or _502_. See the [Error Responses](#error-responses) section for more information.
+_400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 
 ## Team Rankings
@@ -133,7 +129,7 @@ Returns the current team rankings.
 `GET`
 
 ### URL Parameters
-- TODO
+- `limit=[integer]` - Limit the number of items in the response
 
 ### Success Response
 200 OK
@@ -152,9 +148,11 @@ Returns the current team rankings.
 ```
 
 ### Error Response
-You might get a _500_ or _502_. See the [Error Responses](#error-responses) section for more information.
+_400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 # Error Responses
+## 400 Bad Request
+Your request was bad meaning you passed along some data that could not be parsed or was somehow faulty.
 ## 500 Internal Server Error
 If the fetched data could not be parsed correctly this will be returned. This could mean HLTV has changed their HTML code and thus would require manual work to fix it. It could also mean that a corner-case that has not been thought of occurred on HLTV and that the API can't support it.
 ## 502 Bad Gateway
