@@ -2,13 +2,15 @@ from flask import abort
 import re
 import logging
 
+from src.utils import sanity_check_integer
+
 logger = logging.getLogger(__name__)
 
 URL = 'https://www.hltv.org/ranking/teams'
 
 
 def get(requester, limit=None):
-    _sanity_check(limit)
+    sanity_check_integer(limit, 'limit')
 
     if limit is None:
         limit = 0
@@ -43,22 +45,6 @@ def _parse_team(team):
         logger.error('#### END EXCEPTION ####')
 
         abort(500)  # Internal server error
-
-
-def _sanity_check(limit):
-    if limit is None:
-        return
-
-    try:
-        limit = int(limit)
-
-        if limit == 0:
-            abort(400, 'Limit parameter cannot be 0')  # Bad request
-
-    except TypeError and ValueError:
-        logger.exception('Unable to parse %s to integer' % str(limit))
-        # Bad request
-        abort(400, 'Limit parameter must be integer greater than 0')
 
 
 def _extract_digits(string):

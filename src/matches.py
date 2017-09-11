@@ -1,6 +1,12 @@
 from flask import abort
-from functools import reduce
 import logging
+
+from src.utils import \
+    sanity_check_integer, \
+    flatmap, \
+    get_text, \
+    get_tag, \
+    get_tags
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +24,7 @@ MATCHES_URL = BASE_URL + '/matches'
 
 
 def get(requester, match_filter=None, limit=None):
-    _sanity_check(limit)
+    sanity_check_integer(limit, 'limit')
 
     if match_filter:
         filter_mapping = {
@@ -135,7 +141,7 @@ def _filter_upcoming(requester, html_response=None, limit=None):
     if len(upcoming_matches) == 0:
         abort(502)  # Bad gateway
 
-    upcoming_matches = _flatmap(
+    upcoming_matches = flatmap(
         list(map(_parse_upcoming_matches, upcoming_matches)))
 
     # TODO: Find an optimized way of limiting the response
@@ -151,35 +157,35 @@ def _parse_upcoming_matches(upcoming_matches):
     try:
         i = 0
         _results = []
-        date = _get_text(upcoming_matches, 'span.standard-headline')
+        date = get_text(upcoming_matches, 'span.standard-headline')
 
-        for match in _get_tags(upcoming_matches, 'a.upcoming-match'):
+        for match in get_tags(upcoming_matches, 'a.upcoming-match'):
             _result = {}
 
-            start_time = _get_text(match, 'td.time')
+            start_time = get_text(match, 'td.time')
             start_time = start_time.replace('\n', '')
 
-            match_url = BASE_URL + _get_tags(
+            match_url = BASE_URL + get_tags(
                 upcoming_matches,
                 'a.upcoming-match')[i].get('href')
             i += 1
 
             # If placeholder match
-            if _get_tag(match, 'td.placeholder-text-cell'):
+            if get_tag(match, 'td.placeholder-text-cell'):
                 _results.append({
                     'date': date,
-                    'event': _get_text(match, 'td.placeholder-text-cell'),
+                    'event': get_text(match, 'td.placeholder-text-cell'),
                     'match_url': match_url,
                     'start_time': start_time,
                 })
                 continue
 
-            _teams = _get_tags(match, 'td.team-cell')
-            team1 = _get_text(_teams[0], 'div.team')
-            team2 = _get_text(_teams[1], 'div.team')
+            _teams = get_tags(match, 'td.team-cell')
+            team1 = get_text(_teams[0], 'div.team')
+            team2 = get_text(_teams[1], 'div.team')
 
-            event = _get_text(match, 'td.event > span.event-name')
-            map = _get_text(match, 'td.star-cell div.map-text')
+            event = get_text(match, 'td.event > span.event-name')
+            map = get_text(match, 'td.star-cell div.map-text')
 
             _result.update({
                 'date': date,
@@ -203,36 +209,3 @@ def _parse_upcoming_matches(upcoming_matches):
         logger.error('#### END EXCEPTION ####')
 
         abort(500)  # Internal server error
-
-
-def _sanity_check(limit):
-    if limit is None:
-        return
-
-    try:
-        limit = int(limit)
-
-        if limit == 0:
-            abort(400, 'Limit parameter cannot be 0')  # Bad request
-
-    except TypeError and ValueError:
-        logger.exception('Unable to parse %s to integer' % str(limit))
-        # Bad request
-        abort(400, 'Limit parameter must be integer greater than 0')
-
-
-def _get_tag(element, selector):
-    return element.select_one(selector)
-
-
-def _get_tags(element, selector):
-    return element.select(selector)
-
-
-def _get_text(element, selector):
-    return _get_tag(element, selector).get_text()
-
-
-def _flatmap(input_list):
-    """[[a, b], [c, d]] -> [a, b, c, d]"""
-    return reduce(list.__add__, input_list)
