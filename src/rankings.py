@@ -20,7 +20,7 @@ def get(requester, limit=None):
         'div', attrs={'class': 'ranked-team'}, limit=int(limit))
 
     if len(teams) == 0:
-        return None
+        abort(502)  # Bad gateway
 
     return list(map(_parse_team, teams))
 

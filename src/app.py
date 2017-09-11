@@ -31,9 +31,6 @@ def _rankings():
     limit = request.args.get('limit')
     fetched_rankings = rankings.get(requester, limit)
 
-    if not fetched_rankings:
-        abort(502)  # Bad gateway
-
     return jsonify({
         'ranking': fetched_rankings,
         'count': len(fetched_rankings),
