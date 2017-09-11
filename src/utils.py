@@ -35,7 +35,9 @@ def get_tags(element, selector):
     return element.select(selector)
 
 
-def get_text(element, selector):
+def get_text(element, selector=None):
+    if not selector:
+        return element.get_text()
     return get_tag(element, selector).get_text()
 
 
