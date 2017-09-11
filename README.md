@@ -150,6 +150,40 @@ Returns the current team rankings.
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
+
+## News
+Returns the news from the front page of HLTV.
+
+### URL
+`/v1/news`
+
+### Method
+`GET`
+
+### URL Parameters
+- TODO
+
+### Success Response
+200 OK
+```json
+{
+  "count": 30,
+  "news": [
+    {
+      "comments_count": 57,
+      "country": "hungary",
+      "news_url": "https://www.hltv.org/news/21472/gameagents-recruit-volgare",
+      "published_at": "3 hours ago",
+      "title": "GameAgents recruit volgare"
+    },
+    ...
+  ]
+}
+```
+
+### Error Response
+_400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
+
 # Error Responses
 ## 400 Bad Request
 Your request was bad meaning you passed along some data that could not be parsed or was somehow faulty.
