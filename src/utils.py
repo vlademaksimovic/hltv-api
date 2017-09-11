@@ -1,5 +1,6 @@
 from functools import reduce
 from flask import abort
+import re
 import logging
 
 logger = logging.getLogger(__name__)
@@ -36,3 +37,7 @@ def get_tags(element, selector):
 
 def get_text(element, selector):
     return get_tag(element, selector).get_text()
+
+
+def extract_digits(string):
+    return re.findall('\d+', string)[0]
