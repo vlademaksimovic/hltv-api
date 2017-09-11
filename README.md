@@ -64,7 +64,7 @@ Returns data about the upcoming and live matches.
 `GET`
 
 ### URL Parameters
-- `limit=[integer]` - Limit the number of items in the response
+- `limit=[integer]` - Limit the number of **total** items in the response. The limit applies to each type separately, so using `limit=5` will equal in a total of 10 matches, 5 live and 5 upcoming (assuming they are available) 
 - `filter=[upcoming|live]` - Specify the type of match you want
 
 ### Success Response
