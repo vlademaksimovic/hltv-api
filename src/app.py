@@ -6,7 +6,8 @@ from src import \
     requester, \
     rankings, \
     results, \
-    matches
+    matches, \
+    news
 
 app = Flask(__name__)
 
@@ -63,6 +64,19 @@ def _matches():
     return jsonify({
         'matches': fetched_results,
         'count': (upcoming_matches_count + live_matches_count),
+    })
+
+
+@app.route('/v1/news', methods=['GET'])
+def _news():
+    limit = request.args.get('limit')
+    # year = request.args.get('year')
+    # month = request.args.get('month')
+    fetched_results = news.get(requester, limit)
+
+    return jsonify({
+        'news': fetched_results,
+        'count': len(fetched_results),
     })
 
 
