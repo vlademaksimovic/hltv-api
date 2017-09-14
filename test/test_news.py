@@ -28,7 +28,9 @@ class TestNews(unittest.TestCase):
         with open('resources/mock_news_latest.json', 'r') as file:
             expected = json.loads(file.read())
 
-        assert actual == expected[:3]
+        expected = expected[:3]
+
+        assert actual == expected
 
 
 if __name__ == '__main__':

@@ -29,7 +29,9 @@ class TestResults(unittest.TestCase):
         with open('resources/mock_results.json', 'r') as file:
             expected = json.loads(file.read())
 
-        assert actual == expected[:2]
+        expected = expected[:2]
+
+        assert actual == expected
 
     @mock.patch('src.requester.request', side_effect=_mock_response)
     def test_offset_response(self, ignored):
