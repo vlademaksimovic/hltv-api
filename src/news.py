@@ -1,12 +1,14 @@
 import logging
 from flask import abort
+import datetime
 
 from src.utils import \
     sanity_check_integer, \
     get_tags, \
     get_text, \
     get_tag, \
-    extract_digits
+    extract_digits, \
+    sanity_check_string
 
 logger = logging.getLogger(__name__)
 
@@ -16,12 +18,21 @@ URL = 'https://www.hltv.org'
 def get(requester, limit=None, year=None, month=None):
     sanity_check_integer(limit, 'limit')
     sanity_check_integer(year, 'year')
-    sanity_check_integer(month, 'month')
+    sanity_check_string(month, 'month')
+
+    request_url = URL
+
+    if year and month:
+        year = int(year)
+        month = month.lower()
+        _sanity_check_year(year)
+        _sanity_check_month(month)
+        request_url = URL + ('/news/archive/%s/%s' % (year, month))
 
     if limit is None:
         limit = 0
 
-    parsed_content = requester.request(URL)
+    parsed_content = requester.request(request_url)
     news_items = parsed_content.find_all(
         'a', attrs={'class': 'newsline'}, limit=int(limit))
     news_urls = get_tags(parsed_content, 'a.newsline')
@@ -61,3 +72,16 @@ def _parse_news_item(news_item, news_url):
         logger.error('#### END EXCEPTION ####')
 
         abort(500)  # Internal server error
+
+
+def _sanity_check_year(year):
+    current_year = datetime.datetime.now().year
+    if year < 2005 or year > current_year:
+        abort(400, 'News for year [%i] is not available' % year)  # Bad request
+
+
+def _sanity_check_month(month):
+    months = ['january', 'february', 'march', 'april', 'may', 'june', 'july',
+              'august', 'september', 'october', 'november', 'december']
+    if month not in months:
+        abort(400, 'Month [%s] does not exist' % month)  # Bad request

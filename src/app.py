@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Flask, abort, jsonify, make_response, request
+from flask import Flask, jsonify, make_response, request
 
 from src import \
     requester, \
@@ -70,9 +70,9 @@ def _matches():
 @app.route('/v1/news', methods=['GET'])
 def _news():
     limit = request.args.get('limit')
-    # year = request.args.get('year')
-    # month = request.args.get('month')
-    fetched_results = news.get(requester, limit)
+    year = request.args.get('year')
+    month = request.args.get('month')
+    fetched_results = news.get(requester, limit, year, month)
 
     return jsonify({
         'news': fetched_results,

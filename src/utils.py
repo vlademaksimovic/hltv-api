@@ -7,19 +7,36 @@ logger = logging.getLogger(__name__)
 
 
 def sanity_check_integer(param, name):
-    """Used for checking URL params inputted by the user"""
+    """Sanity check user inputted URL param of type integer"""
     if param is None:
         return
 
     try:
         param = int(param)
         if param == 0:
-            abort(400, 'Parameter %s cannot be 0' % name)  # Bad request
+            abort(400, 'Parameter [%i] cannot be 0' % name)  # Bad request
 
     except TypeError and ValueError:
-        logger.exception('Failed to parse %s to integer' % name)
+        logger.exception('Failed to parse [%s] to integer' % name)
         # Bad request
-        abort(400, 'Parameter %s must be integer greater than 0' % name)
+        abort(400, 'Parameter [%s] must be integer greater than 0' % name)
+
+
+def sanity_check_string(param, name):
+    """Sanity check user inputted URL param of type string"""
+    if param is None:
+        return
+
+    try:
+        param = str(param)
+        if param == '':
+            abort(400, 'Parameter [%s] cannot be empty' % name)  # Bad request
+
+    except TypeError and ValueError:
+        logger.exception('Failed to parse [%i] to string' % name)
+        # Bad request
+        abort(400,
+              'Parameter [%i] must be string with at least 1 character' % name)
 
 
 def flatmap(input_list):
