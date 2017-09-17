@@ -93,4 +93,6 @@ def _index():
 
 
 if __name__ == '__main__':
-    app.run(debug=not is_production)
+    # Flask server is only used during development
+    if not is_production:
+        app.run(debug=True, host='0.0.0.0', port=8000)

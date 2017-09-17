@@ -1,15 +1,22 @@
 # Travis cannot use 'pushd' or 'popd' without this
-SHELL := /bin/bash
+SHELL	  := /bin/bash
+IMAGE_NAME = hltv-api
 
-.PHONY: ci install start lint test test-cov
+.PHONY: ci build dev install start lint test test-cov
 
 ci: install lint test
+
+build:
+	docker build -t $(IMAGE_NAME):latest .
+
+dev:
+	python3 app.py
 
 install:
 	pip install -r requirements.txt
 
 start:
-	python3 src/app.py
+	docker run -p 8000:8000 --restart=always $(IMAGE_NAME):latest
 
 lint:
 	pep8 --format=pylint src test
