@@ -22,4 +22,4 @@ RUN pip3 install -r requirements.txt
 EXPOSE 8000
 
 ENTRYPOINT ["uwsgi"]
-CMD ["--http", "0.0.0.0:8000", "--module", "app:app", "--processes", "1", "--threads", "8"]
+CMD ["--module app:app --http 0.0.0.0:$PORT"]
