@@ -1,6 +1,4 @@
-#FROM alpine:3.6
 FROM gliderlabs/alpine:3.6
-
 MAINTAINER Simon Egersand "s.egersand@gmail.com"
 
 RUN apk add --update --no-cache \
