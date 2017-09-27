@@ -7,7 +7,8 @@ An unofficial API for [HLTV.org](http://HLTV.org).
 - [API Usage](#api-usage)
     - [Match Results](#match-results)
     - [Upcoming Matches](#upcoming-matches)
-    - [Rankings](#team-rankings)
+    - [Team Rankings](#team-rankings)
+    - [Stats](#stats)
 - [Error Responses](#error-responses)
 - [License](#license)
 
@@ -187,6 +188,56 @@ Returns the news from the front page of HLTV.
 
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
+
+
+## Stats
+Returns the current **rating** statistics for top 8 players and teams. Default returns statistics for both players and teams.
+The response is ordered, meaning the first player in the response is the highest rated player, and the same rule applies for teams.
+
+### URL
+`/v1/stats`
+
+### Method
+`GET`
+
+### URL Parameters
+- `limit=[integer]` - Limit the number of **total** items in the response. The limit applies to each type separately, so using `limit=5` will equal in a total of 10 items, 5 players and 5 teams (assuming they are available)
+- `type=[players|teams]` - The type of statistics you want in the response (default is both)
+
+### Success Response
+200 OK
+```json
+{
+  "count": 16,
+  "stats": {
+    "players": [
+      {
+        "maps": 548,
+        "name": "XANTARES",
+        "origin": "turkey",
+        "picture_url": "https://static.hltv.org/images/playerprofile/thumb/7938/100.jpeg?v=3",
+        "profile_url": "https://www.hltv.org/stats/players/7938/XANTARES",
+        "rating": 1.25
+      },
+      ...
+    ],
+    "teams": [
+      {
+        "maps": 443,
+        "name": "TyLoo",
+        "picture_url": "https://static.hltv.org/images/team/logo/4863",
+        "profile_url": "https://www.hltv.org/stats/teams/4863/TyLoo",
+        "rating": 1.09
+      },
+      ...
+    ]
+  }
+}
+```
+
+### Error Response
+_400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
+
 
 # Error Responses
 ## 400 Bad Request

@@ -7,7 +7,8 @@ from src import \
     rankings, \
     results, \
     matches, \
-    news
+    news, \
+    stats
 
 app = Flask(__name__)
 
@@ -54,17 +55,15 @@ def _results():
 @app.route('/v1/matches', methods=['GET'])
 def _matches():
     limit = request.args.get('limit')
-    match_filter = request.args.get('filter')
-    fetched_results = matches.get(requester, match_filter, limit)
+    filter = request.args.get('filter')
+    fetched_results = matches.get(requester, filter, limit)
 
-    upcoming_matches_count = len(fetched_results.get('upcoming')) \
-        if fetched_results.get('upcoming') else 0
-    live_matches_count = len(fetched_results.get('live')) \
-        if fetched_results.get('live') else 0
+    upcoming_count = _get_count(fetched_results.get('upcoming'))
+    live_count = _get_count(fetched_results.get('live'))
 
     return jsonify({
         'matches': fetched_results,
-        'count': (upcoming_matches_count + live_matches_count),
+        'count': (upcoming_count + live_count),
     })
 
 
@@ -81,6 +80,21 @@ def _news():
     })
 
 
+@app.route('/v1/stats', methods=['GET'])
+def _stats():
+    limit = request.args.get('limit')
+    type = request.args.get('type')
+    fetched_results = stats.get(requester, limit, type)
+
+    players_count = _get_count(fetched_results.get('players'))
+    teams_count = _get_count(fetched_results.get('teams'))
+
+    return jsonify({
+        'stats': fetched_results,
+        'count': (players_count + teams_count),
+    })
+
+
 @app.route('/', methods=['GET'])
 def _index():
     return jsonify({
@@ -91,6 +105,10 @@ def _index():
         'project_url': 'https://github.com/simeg/hltv-api',
         'latest_version': 1,
     })
+
+
+def _get_count(optional_array):
+    return len(optional_array) if optional_array else 0
 
 
 if __name__ == '__main__':
