@@ -18,6 +18,7 @@ is_production = bool(os.environ.get('IS_PRODUCTION', default=False))
 
 
 @app.errorhandler(400)
+@app.errorhandler(404)
 @app.errorhandler(500)
 @app.errorhandler(502)
 def _handle_error(error):
