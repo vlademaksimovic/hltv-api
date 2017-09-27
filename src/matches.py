@@ -146,6 +146,7 @@ def _filter_upcoming(requester, html_response=None, limit=None):
         list(map(_parse_upcoming_matches, upcoming_matches)))
 
     # TODO: Find an optimized way of limiting the response
+    # Idea: in .find_all, pass limit flag as we do in rankings for example
     if limit:
         upcoming_matches = upcoming_matches[:int(limit)]
 
