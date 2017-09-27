@@ -1,8 +1,8 @@
-# Travis cannot use 'pushd' or 'popd' without this
+.PHONY: ci build dev install start lint test test-cov
+
+# Travis cannot use 'pushd' or 'popd' without SHELL defined
 SHELL	  := /bin/bash
 IMAGE_NAME = hltv-api
-
-.PHONY: ci build dev install start lint test test-cov
 
 ci: install lint test
 
