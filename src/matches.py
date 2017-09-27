@@ -33,7 +33,8 @@ def get(requester, match_filter=None, limit=None):
         }
 
         if not filter_mapping[match_filter]:
-            abort(400)  # Bad request
+            # Bad request
+            abort(400, 'Filter [%s] does not exist' % match_filter)
 
         return filter_mapping[match_filter](requester, limit=limit)
 
