@@ -115,6 +115,8 @@ Returns data about the upcoming and live matches.
 }
 ```
 
+**NOTE:** If `teamX_score` is equal to `"-"` it means that the match has not been started and that there's no score yet.
+
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
