@@ -163,7 +163,9 @@ Returns the news from the front page of HLTV.
 `GET`
 
 ### URL Parameters
-- TODO
+- `limit=[integer]` - Limit the number of items in the response
+- `year=[integer]` - Get items from this year, minimum value is `2005` (requires the `month` param to be defined)
+- `month=[string]` - Get items from this month (requires the `year` param to be defined). **Example:** `december`
 
 ### Success Response
 200 OK
