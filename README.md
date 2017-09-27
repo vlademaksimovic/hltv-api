@@ -7,6 +7,7 @@ An unofficial API for [HLTV.org](http://HLTV.org).
 - [API Usage](#api-usage)
     - [Match Results](#match-results)
     - [Upcoming Matches](#upcoming-matches)
+    - [News](#news)
     - [Team Rankings](#team-rankings)
     - [Stats](#stats)
 - [Error Responses](#error-responses)
@@ -122,6 +123,42 @@ Returns data about the upcoming and live matches.
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 
+## News
+Returns the news from the front page of HLTV.
+
+### URL
+`/v1/news`
+
+### Method
+`GET`
+
+### URL Parameters
+- `limit=[integer]` - Limit the number of items in the response
+- `year=[integer]` - Get items from this year, minimum value is `2005` (requires the `month` param to be defined)
+- `month=[string]` - Get items from this month. **Example:** `december` (requires the `year` param to be defined)
+
+### Success Response
+200 OK
+```json
+{
+  "count": 30,
+  "news": [
+    {
+      "comments_count": 57,
+      "country": "hungary",
+      "news_url": "https://www.hltv.org/news/21472/gameagents-recruit-volgare",
+      "published_at": "3 hours ago",
+      "title": "GameAgents recruit volgare"
+    },
+    ...
+  ]
+}
+```
+
+### Error Response
+_400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
+
+
 ## Team Rankings
 Returns the current team rankings.
 
@@ -144,42 +181,6 @@ Returns the current team rankings.
       "name": "SK",
       "points": 886,
       "position": 1
-    },
-    ...
-  ]
-}
-```
-
-### Error Response
-_400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
-
-
-## News
-Returns the news from the front page of HLTV.
-
-### URL
-`/v1/news`
-
-### Method
-`GET`
-
-### URL Parameters
-- `limit=[integer]` - Limit the number of items in the response
-- `year=[integer]` - Get items from this year, minimum value is `2005` (requires the `month` param to be defined)
-- `month=[string]` - Get items from this month (requires the `year` param to be defined). **Example:** `december`
-
-### Success Response
-200 OK
-```json
-{
-  "count": 30,
-  "news": [
-    {
-      "comments_count": 57,
-      "country": "hungary",
-      "news_url": "https://www.hltv.org/news/21472/gameagents-recruit-volgare",
-      "published_at": "3 hours ago",
-      "title": "GameAgents recruit volgare"
     },
     ...
   ]
