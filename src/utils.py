@@ -53,7 +53,7 @@ def get_tags(element, selector):
 
 
 def get_text(element, selector=None):
-    if not selector:
+    if selector is None:
         return element.get_text()
     return get_tag(element, selector).get_text()
 

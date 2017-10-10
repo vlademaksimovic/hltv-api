@@ -1,7 +1,10 @@
 from flask import abort
 import logging
 
-from src.utils import sanity_check_integer, extract_digits
+from src.utils import \
+    sanity_check_integer, \
+    extract_digits, \
+    get_text
 
 logger = logging.getLogger(__name__)
 
@@ -26,9 +29,10 @@ def get(requester, limit=None):
 
 def _parse_team(team):
     try:
-        name = team.select_one('span.name').get_text()
-        pos = team.select_one('span.position').get_text().replace('#', '')
-        points = extract_digits(team.select_one('span.points').get_text())
+        name = get_text(team, 'span.name')
+        pos = get_text(team, 'span.position').replace('#', '')
+        points = get_text(team, 'span.points')
+        points = extract_digits(points)
 
         return {
             'name': name,

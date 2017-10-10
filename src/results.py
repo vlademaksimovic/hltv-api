@@ -5,7 +5,8 @@ from src.utils import \
     sanity_check_integer, \
     flatmap, \
     get_text, \
-    get_tag
+    get_tag, \
+    get_tags
 
 logger = logging.getLogger(__name__)
 
@@ -39,10 +40,11 @@ def get(requester, limit=None, offset=None):
 def _parse_results(single_day_results):
     try:
         _results = []
-        date = single_day_results.select_one('span.standard-headline')
-        date = date.get_text().replace('Results for ', '')
+        date = get_tag(single_day_results, 'span.standard-headline')
+        date = get_text(date)
+        date = date.replace('Results for ', '')
 
-        for match in single_day_results.select('div.result-con'):
+        for match in get_tags(single_day_results, 'div.result-con'):
             _result = {}
 
             team1 = get_text(match, 'div.team1 .team')

@@ -81,18 +81,18 @@ def _parse_live_match(match):
         return None
 
     try:
-        _teams = match.select('td.teams span.team-name')
-        team1 = _teams[0].get_text()
-        team2 = _teams[1].get_text()
+        _teams = get_tags(match, 'td.teams span.team-name')
+        team1 = get_text(_teams[0])
+        team2 = get_text(_teams[1])
 
-        match_type = match.select_one('tr.header > td.bestof').get_text()
-        event = match.select_one('div.line-align > div.event-name').get_text()
+        match_type = get_text(match, 'tr.header > td.bestof')
+        event = get_text(match, 'div.line-align > div.event-name')
 
-        _maps = match.select('tr.header > td.map')
-        _table_rows = match.select('table tr')
+        _maps = get_tags(match, 'tr.header > td.map')
+        _table_rows = get_tags(match, 'table tr')
 
-        _score_team1 = _table_rows[1].select('td.mapscore span')
-        _score_team2 = _table_rows[2].select('td.mapscore span')
+        _score_team1 = get_tags(_table_rows[1], 'td.mapscore span')
+        _score_team2 = get_tags(_table_rows[2], 'td.mapscore span')
 
         map_results = list(map(_parse_map, _maps, _score_team1, _score_team2))
 
