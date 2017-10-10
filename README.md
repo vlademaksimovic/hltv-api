@@ -66,7 +66,7 @@ Returns data about the upcoming and live matches.
 `GET`
 
 ### URL Parameters
-- `limit=[integer]` - Limit the number of **total** items in the response. The limit applies to each type separately, so using `limit=5` will equal in a total of 10 matches, 5 live and 5 upcoming (assuming they are available) 
+- `limit=[integer]` - Limit the number of **total** items in the response. The limit applies to each type separately, so using `limit=5` will equal in a total of 10 matches, 5 live and 5 upcoming (assuming they are available)
 - `filter=[upcoming|live]` - Specify the type of match you want
 
 ### Success Response
@@ -243,6 +243,8 @@ _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 # Error Responses
 ## 400 Bad Request
 Your request was bad meaning you passed along some data that could not be parsed or was somehow faulty.
+## 404 Not Found
+Your request doesn't match anything on the server, you most likely are trying to access an endpoint that doesn't exist.
 ## 500 Internal Server Error
 If the fetched data could not be parsed correctly this will be returned. This could mean HLTV has changed their HTML code and thus would require manual work to fix it. It could also mean that a corner-case that has not been thought of occurred on HLTV and that the API can't support it.
 ## 502 Bad Gateway
