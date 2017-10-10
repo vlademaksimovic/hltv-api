@@ -44,7 +44,11 @@ def get(requester, match_filter=None, limit=None):
         upcoming_matches = _filter_upcoming(requester, html_response, limit)
         live_matches = _filter_live(requester, html_response, limit)
 
-        if len(upcoming_matches) == 0 or len(live_matches) == 0:
+        # If there's no upcoming matches something is wrong,
+        # but there can still be no live matches.
+        # However, if they're both missing something is wrong
+        if len(upcoming_matches) == 0 or \
+                (len(upcoming_matches) == 0 and len(live_matches) == 0):
             abort(502)  # Bad gateway
 
         return {
