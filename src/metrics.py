@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 api_key = os.environ['HOSTEDGRAPHITE_APIKEY']
 url = 'carbon.hostedgraphite.com'
 
-allowed_units = ['counter', 'milliseconds']
+allowed_units = ['counter', 'milliseconds', 'code']
 
 
 def log(key, unit, value):

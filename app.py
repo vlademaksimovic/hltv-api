@@ -25,6 +25,8 @@ is_production = bool(os.environ.get('IS_PRODUCTION', default=False))
 @app.errorhandler(500)
 @app.errorhandler(502)
 def _handle_error(error):
+    metrics.log('errors.count', 'counter', 1)
+    metrics.log('errors.code', 'code', int(error.code))
     return make_response(jsonify({
         'error_msg': error.description,
         'error_code': int(error.code),
@@ -50,9 +52,15 @@ def _rankings():
 
 @app.route('/v1/results', methods=['GET'])
 def _results():
+    start = datetime.datetime.now()
+
     limit = request.args.get('limit')
     offset = request.args.get('offset')
     fetched_results = results.get(requester, limit, offset)
+
+    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    metrics.log('results.latency', 'milliseconds', delta)
+    metrics.log('results.count', 'counter', 1)
 
     return jsonify({
         'results': fetched_results,
@@ -62,12 +70,18 @@ def _results():
 
 @app.route('/v1/matches', methods=['GET'])
 def _matches():
+    start = datetime.datetime.now()
+
     limit = request.args.get('limit')
     filter = request.args.get('filter')
     fetched_results = matches.get(requester, filter, limit)
 
     upcoming_count = _get_count(fetched_results.get('upcoming'))
     live_count = _get_count(fetched_results.get('live'))
+
+    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    metrics.log('matches.latency', 'milliseconds', delta)
+    metrics.log('matches.count', 'counter', 1)
 
     return jsonify({
         'matches': fetched_results,
@@ -77,10 +91,16 @@ def _matches():
 
 @app.route('/v1/news', methods=['GET'])
 def _news():
+    start = datetime.datetime.now()
+
     limit = request.args.get('limit')
     year = request.args.get('year')
     month = request.args.get('month')
     fetched_results = news.get(requester, limit, year, month)
+
+    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    metrics.log('news.latency', 'milliseconds', delta)
+    metrics.log('news.count', 'counter', 1)
 
     return jsonify({
         'news': fetched_results,
@@ -90,12 +110,18 @@ def _news():
 
 @app.route('/v1/stats', methods=['GET'])
 def _stats():
+    start = datetime.datetime.now()
+
     limit = request.args.get('limit')
     type = request.args.get('type')
     fetched_results = stats.get(requester, limit, type)
 
     players_count = _get_count(fetched_results.get('players'))
     teams_count = _get_count(fetched_results.get('teams'))
+
+    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    metrics.log('stats.latency', 'milliseconds', delta)
+    metrics.log('stats.count', 'counter', 1)
 
     return jsonify({
         'stats': fetched_results,
