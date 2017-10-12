@@ -1,5 +1,6 @@
 import os
 import logging
+import datetime
 from flask import Flask, jsonify, make_response, request
 
 from src import \
@@ -8,7 +9,8 @@ from src import \
     results, \
     matches, \
     news, \
-    stats
+    stats, \
+    metrics
 
 app = Flask(__name__)
 
@@ -31,8 +33,14 @@ def _handle_error(error):
 
 @app.route('/v1/rankings', methods=['GET'])
 def _rankings():
+    start = datetime.datetime.now()
+
     limit = request.args.get('limit')
     fetched_rankings = rankings.get(requester, limit)
+
+    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    metrics.log('rankings.latency', 'milliseconds', delta)
+    metrics.log('rankings.count', 'counter', 1)
 
     return jsonify({
         'ranking': fetched_rankings,
@@ -109,6 +117,11 @@ def _index():
 
 def _get_count(optional_array):
     return len(optional_array) if optional_array else 0
+
+
+def _get_milliseconds_delta(start, end):
+    """Assumes inputs are of type datetime.datetime"""
+    return (end - start).microseconds / 1000
 
 
 if __name__ == '__main__':
