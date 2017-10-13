@@ -33,4 +33,4 @@ RUN pip3 install -r requirements.txt
 # USER myuser
 
 # $PORT is set by Heroku
-CMD gunicorn --bind 0.0.0.0:$PORT app:app
+CMD newrelic-admin run-program gunicorn --bind 0.0.0.0:$PORT app:app
