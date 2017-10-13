@@ -2,3 +2,4 @@ Flask
 BeautifulSoup4
 pep8
 pytest-cov
+gunicorn
