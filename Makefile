@@ -9,6 +9,9 @@ ci: install lint test
 build:
 	docker build -t $(IMAGE_NAME):latest .
 
+deploy:
+	heroku container:push web
+
 dev:
 	python3 app.py
 
