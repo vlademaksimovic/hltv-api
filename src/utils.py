@@ -60,3 +60,12 @@ def get_text(element, selector=None):
 
 def extract_digits(string):
     return re.findall('\d+', string)[0]
+
+
+def get_count(possibly_empty_array):
+    return len(possibly_empty_array) if possibly_empty_array else 0
+
+
+def get_milliseconds_delta(start, end):
+    """Assumes inputs are of type datetime.datetime"""
+    return (end - start).microseconds / 1000

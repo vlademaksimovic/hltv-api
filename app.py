@@ -3,6 +3,10 @@ import logging
 import datetime
 from flask import Flask, jsonify, make_response, request
 
+from src.utils import \
+    get_count, \
+    get_milliseconds_delta
+
 from src import \
     requester, \
     rankings, \
@@ -40,7 +44,7 @@ def _rankings():
     limit = request.args.get('limit')
     fetched_rankings = rankings.get(requester, limit)
 
-    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    delta = get_milliseconds_delta(start, end=datetime.datetime.now())
     metrics.log('rankings.latency', 'milliseconds', delta)
     metrics.log('rankings.count', 'counter', 1)
 
@@ -58,7 +62,7 @@ def _results():
     offset = request.args.get('offset')
     fetched_results = results.get(requester, limit, offset)
 
-    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    delta = get_milliseconds_delta(start, end=datetime.datetime.now())
     metrics.log('results.latency', 'milliseconds', delta)
     metrics.log('results.count', 'counter', 1)
 
@@ -76,10 +80,10 @@ def _matches():
     filter = request.args.get('filter')
     fetched_results = matches.get(requester, filter, limit)
 
-    upcoming_count = _get_count(fetched_results.get('upcoming'))
-    live_count = _get_count(fetched_results.get('live'))
+    upcoming_count = get_count(fetched_results.get('upcoming'))
+    live_count = get_count(fetched_results.get('live'))
 
-    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    delta = get_milliseconds_delta(start, end=datetime.datetime.now())
     metrics.log('matches.latency', 'milliseconds', delta)
     metrics.log('matches.count', 'counter', 1)
 
@@ -98,7 +102,7 @@ def _news():
     month = request.args.get('month')
     fetched_results = news.get(requester, limit, year, month)
 
-    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    delta = get_milliseconds_delta(start, end=datetime.datetime.now())
     metrics.log('news.latency', 'milliseconds', delta)
     metrics.log('news.count', 'counter', 1)
 
@@ -116,10 +120,10 @@ def _stats():
     type = request.args.get('type')
     fetched_results = stats.get(requester, limit, type)
 
-    players_count = _get_count(fetched_results.get('players'))
-    teams_count = _get_count(fetched_results.get('teams'))
+    players_count = get_count(fetched_results.get('players'))
+    teams_count = get_count(fetched_results.get('teams'))
 
-    delta = _get_milliseconds_delta(start, end=datetime.datetime.now())
+    delta = get_milliseconds_delta(start, end=datetime.datetime.now())
     metrics.log('stats.latency', 'milliseconds', delta)
     metrics.log('stats.count', 'counter', 1)
 
@@ -139,15 +143,6 @@ def _index():
         'project_url': 'https://github.com/simeg/hltv-api',
         'latest_version': 1,
     })
-
-
-def _get_count(optional_array):
-    return len(optional_array) if optional_array else 0
-
-
-def _get_milliseconds_delta(start, end):
-    """Assumes inputs are of type datetime.datetime"""
-    return (end - start).microseconds / 1000
 
 
 if __name__ == '__main__':
