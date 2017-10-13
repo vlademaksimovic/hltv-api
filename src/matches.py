@@ -23,20 +23,27 @@ BASE_URL = 'https://www.hltv.org'
 MATCHES_URL = BASE_URL + '/matches'
 
 
-def get(requester, match_filter=None, limit=None):
+def get(requester, filter_=None, limit=None):
     sanity_check_integer(limit, 'limit')
 
-    if match_filter:
+    if filter_:
         filter_mapping = {
             'live': _filter_live,
             'upcoming': _filter_upcoming,
         }
 
-        if not filter_mapping[match_filter]:
+        if not filter_mapping[filter_]:
             # Bad request
-            abort(400, 'Filter [%s] does not exist' % match_filter)
+            abort(400, 'Filter [%s] does not exist' % filter_)
 
-        return filter_mapping[match_filter](requester, limit=limit)
+        result = filter_mapping[filter_](requester, limit=limit)
+
+        # Live matches are optional, they are allowed to be missing
+        if filter_ != 'live':
+            if len(result.get(filter_)) == 0:
+                abort(502)  # Bad gateway
+
+        return result
 
     else:  # If no filter
         html_response = requester.request(MATCHES_URL)
@@ -44,11 +51,9 @@ def get(requester, match_filter=None, limit=None):
         upcoming_matches = _filter_upcoming(requester, html_response, limit)
         live_matches = _filter_live(requester, html_response, limit)
 
-        # If there's no upcoming matches something is wrong,
-        # but there can still be no live matches.
-        # However, if they're both missing something is wrong
-        if len(upcoming_matches) == 0 or \
-                (len(upcoming_matches) == 0 and len(live_matches) == 0):
+        # If there are no upcoming matches something is wrong,
+        # but live matches are allowed to be missing
+        if len(upcoming_matches.get('upcoming')) == 0:
             abort(502)  # Bad gateway
 
         return {
@@ -66,9 +71,6 @@ def _filter_live(requester, html_response=None, limit=None):
 
     live_matches = html_response.find_all(
         'div', attrs={'class': 'live-match'}, limit=int(limit))
-
-    if len(live_matches) == 0:
-        abort(502)  # Bad gateway
 
     live_matches = list(map(_parse_live_match, live_matches))
     live_matches = list(filter(lambda ele: ele is not None, live_matches))
@@ -142,9 +144,6 @@ def _filter_upcoming(requester, html_response=None, limit=None):
 
     upcoming_matches = html_response.find_all(
         'div', attrs={'class': 'match-day'})
-
-    if len(upcoming_matches) == 0:
-        abort(502)  # Bad gateway
 
     upcoming_matches = flatmap(
         list(map(_parse_upcoming_matches, upcoming_matches)))
