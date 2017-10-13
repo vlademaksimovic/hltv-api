@@ -9,7 +9,7 @@ ci: install lint test
 build:
 	docker build -t $(IMAGE_NAME):latest .
 
-deploy: lint test
+deploy: lint test build
 	heroku container:push web
 
 dev:
