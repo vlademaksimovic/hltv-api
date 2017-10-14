@@ -4,3 +4,4 @@ pep8
 pytest-cov
 gunicorn
 newrelic
+hypothesis

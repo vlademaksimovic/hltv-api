@@ -1,4 +1,6 @@
 from functools import reduce
+
+import datetime
 from flask import abort
 import re
 import logging
@@ -64,10 +66,13 @@ def extract_digits(string):
     return re.findall('\d+', string)[0]
 
 
-def get_count(possibly_empty_array):
-    return len(possibly_empty_array) if possibly_empty_array else 0
+def get_count(list_or_none):
+    return len(list_or_none) if list_or_none else 0
 
 
 def get_milliseconds_delta(start, end):
-    """Assumes inputs are of type datetime.datetime"""
+    if not isinstance(start, datetime.datetime) or \
+            not isinstance(end, datetime.datetime):
+        raise TypeError
+
     return (end - start).microseconds / 1000
