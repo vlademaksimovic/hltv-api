@@ -41,10 +41,10 @@ def sanity_check_string(param, name):
               'Parameter [%i] must be string with at least 1 character' % name)
 
 
-# TODO: Test with empty list as input, as this happens in matches.py
-# in _filter_upcoming
 def flatmap(input_list):
     """[[a, b], [c, d]] -> [a, b, c, d]"""
+    if not input_list:
+        return input_list
     return reduce(list.__add__, input_list)
 
 
