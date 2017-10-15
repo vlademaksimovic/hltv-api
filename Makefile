@@ -1,10 +1,10 @@
-.PHONY: ci build dev install start lint test test-cov
+.PHONY: ci build deploy dev install start lint test test-cov
 
 # Travis cannot use 'pushd' or 'popd' without SHELL defined
-SHELL	  := /bin/bash
+SHELL := /bin/bash
 IMAGE_NAME = hltv-api
 
-ci: install lint test
+ci: install lint unzip test
 
 build:
 	docker build -t $(IMAGE_NAME):latest .
@@ -29,3 +29,10 @@ test:
 
 test-cov:
 	pushd test; py.test --cov-report=html:../coverage --cov-report=term --no-cov-on-fail --cov src; popd
+
+zip:
+	pushd test; tar -zcvf resources.tar.gz resources; popd
+
+unzip:
+	pushd test; tar -zxvf resources.tar.gz; popd
+
