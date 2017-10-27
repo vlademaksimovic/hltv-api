@@ -55,6 +55,11 @@ Returns data about finished matches. By default it will return the 100 latest ma
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
+### Example
+```sh
+$ curl http://hltv-api.herokuapp.com/v1/results?limit=10
+```
+
 
 ## Upcoming Matches
 Returns data about the upcoming and live matches.
@@ -122,6 +127,11 @@ Returns data about the upcoming and live matches.
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
+### Example
+```sh
+$ curl http://hltv-api.herokuapp.com/v1/matches?filter=upcoming
+```
+
 
 ## News
 Returns the news from the front page of HLTV.
@@ -158,6 +168,11 @@ Returns the news from the front page of HLTV.
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
+### Example
+```sh
+$ curl http://hltv-api.herokuapp.com/v1/news?year=2015&month=may
+```
+
 
 ## Team Rankings
 Returns the current team rankings.
@@ -189,6 +204,11 @@ Returns the current team rankings.
 
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
+
+### Example
+```sh
+$ curl http://hltv-api.herokuapp.com/v1/rankings?limit=5
+```
 
 
 ## Stats
@@ -238,6 +258,11 @@ The response is ordered, meaning the first player in the response is the highest
 
 ### Error Response
 _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
+
+### Example
+```sh
+$ curl http://hltv-api.herokuapp.com/v1/stats?type=teams
+```
 
 
 # Error Responses
