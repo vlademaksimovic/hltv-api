@@ -50,13 +50,13 @@ def _parse_results(single_day_results):
             team1 = get_text(match, 'div.team1 .team')
             team2 = get_text(match, 'div.team2 .team')
             event = get_text(match, 'td.event > span.event-name')
-            map = get_text(match, 'td.star-cell div.map-text')
+            map_ = get_text(match, 'td.star-cell div.map-text')
             match_url = BASE_URL + get_tag(match, 'a.a-reset').get('href')
 
             _result.update({
                 'date': date,
                 'event': event,
-                'map': map,
+                'map': map_,
                 'match_url': match_url,
                 'team1': team1,
                 'team2': team2,

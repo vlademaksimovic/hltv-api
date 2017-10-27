@@ -120,8 +120,8 @@ def _parse_live_match(match):
         abort(500)  # Internal server error
 
 
-def _parse_map(map, t1_score, t2_score):
-    map = map.get_text()
+def _parse_map(map_, t1_score, t2_score):
+    map_ = map_.get_text()
     t1_score = t1_score.get_text()
     t2_score = t2_score.get_text()
 
@@ -132,7 +132,7 @@ def _parse_map(map, t1_score, t2_score):
         t2_score = int(t2_score)
 
     return {
-        'name': map,
+        'name': map_,
         'team1_score': t1_score,
         'team2_score': t2_score,
     }
@@ -190,12 +190,12 @@ def _parse_upcoming_matches(upcoming_matches):
             team2 = get_text(_teams[1], 'div.team')
 
             event = get_text(match, 'td.event > span.event-name')
-            map = get_text(match, 'td.star-cell div.map-text')
+            map_ = get_text(match, 'td.star-cell div.map-text')
 
             _result.update({
                 'date': date,
                 'event': event,
-                'map': map,
+                'map': map_,
                 'match_url': match_url,
                 'team1': team1,
                 'team2': team2,

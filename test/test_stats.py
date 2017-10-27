@@ -14,7 +14,7 @@ def _mock_stats_response(*args, **kwargs):
 class TestStats(unittest.TestCase):
     @mock.patch('src.requester.request', side_effect=_mock_stats_response)
     def test_players_correct_response(self, ignored):
-        actual = stats.get(requester, type='players')
+        actual = stats.get(requester, type_='players')
 
         with open('resources/mock_stats_players.json', 'r') as file:
             expected = json.loads(file.read())
@@ -23,7 +23,7 @@ class TestStats(unittest.TestCase):
 
     @mock.patch('src.requester.request', side_effect=_mock_stats_response)
     def test_teams_correct_response(self, ignored):
-        actual = stats.get(requester, type='teams')
+        actual = stats.get(requester, type_='teams')
 
         with open('resources/mock_stats_teams.json', 'r') as file:
             expected = json.loads(file.read())
@@ -41,7 +41,7 @@ class TestStats(unittest.TestCase):
 
     @mock.patch('src.requester.request', side_effect=_mock_stats_response)
     def test_players_limit_response(self, ignored):
-        actual = stats.get(requester, '2', type='players')
+        actual = stats.get(requester, '2', type_='players')
 
         with open('resources/mock_stats_players.json', 'r') as file:
             expected = json.loads(file.read())
@@ -53,7 +53,7 @@ class TestStats(unittest.TestCase):
 
     @mock.patch('src.requester.request', side_effect=_mock_stats_response)
     def test_teams_limit_response(self, ignored):
-        actual = stats.get(requester, '2', type='teams')
+        actual = stats.get(requester, '2', type_='teams')
 
         with open('resources/mock_stats_teams.json', 'r') as file:
             expected = json.loads(file.read())

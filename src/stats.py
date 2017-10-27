@@ -13,26 +13,26 @@ BASE_URL = 'https://www.hltv.org'
 STATS_URL = BASE_URL + '/stats'
 
 
-def get(requester, limit=None, type=None):
+def get(requester, limit=None, type_=None):
     sanity_check_integer(limit, 'limit')
-    sanity_check_string(type, 'type')
+    sanity_check_string(type_, 'type_')
 
     if limit is None:
         limit = 0
 
-    if type:
-        if type not in ['players', 'teams']:
-            abort(400, 'Type [%s] does not exist' % type)  # Bad request
+    if type_:
+        if type_ not in ['players', 'teams']:
+            abort(400, 'Type [%s] does not exist' % type_)  # Bad request
 
         html_response = requester.request(STATS_URL)
 
-        return _parse_items(html_response, limit=limit, type=type)
+        return _parse_items(html_response, limit=limit, type_=type_)
 
-    else:  # If no type
+    else:  # If no type_
         html_response = requester.request(STATS_URL)
 
-        players = _parse_items(html_response, limit, type='players')
-        teams = _parse_items(html_response, limit, type='teams')
+        players = _parse_items(html_response, limit, type_='players')
+        teams = _parse_items(html_response, limit, type_='teams')
 
         if len(players) == 0 or len(teams) == 0:
             abort(502)  # Bad gateway
@@ -73,15 +73,15 @@ def _parse_teams(html):
         _raise_exception(html)
 
 
-def _parse_items(html, limit, type):
-    if type == 'players':
+def _parse_items(html, limit, type_):
+    if type_ == 'players':
         index = 0
         parse_func = _parse_players
-    elif type == 'teams':
+    elif type_ == 'teams':
         index = 1
         parse_func = _parse_teams
     else:
-        logger.error('Internal type [%s] is not supported' % type)
+        logger.error('Internal type_ [%s] is not supported' % type_)
         abort(500)
 
     items = html.find_all('div', attrs={'class': 'col'})
@@ -96,7 +96,7 @@ def _parse_items(html, limit, type):
     items = list(filter(lambda ele: ele is not None, items))
 
     return {
-        type: items,
+        type_: items,
     }
 
 
