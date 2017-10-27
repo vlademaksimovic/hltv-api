@@ -62,6 +62,10 @@ def get_text(element, selector=None):
     return get_tag(element, selector).get_text()
 
 
+def get_attr(element, attribute):
+    return element.get(attribute)
+
+
 def extract_digits(string):
     return re.findall('\d+', string)[0]
 

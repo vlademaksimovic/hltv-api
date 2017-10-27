@@ -3,11 +3,12 @@ from flask import abort
 import datetime
 
 from src.utils import \
-    sanity_check_integer, \
+    get_attr, \
     get_tags, \
     get_text, \
     get_tag, \
     extract_digits, \
+    sanity_check_integer, \
     sanity_check_string
 
 logger = logging.getLogger(__name__)
@@ -46,10 +47,10 @@ def get(requester, limit=None, year=None, month=None):
 def _parse_news_item(news_item, news_url):
     try:
         title = get_text(news_item, 'div.newstext')
-        url = URL + news_url.get('href')
+        url = URL + get_attr(news_url, 'href')
 
         country = get_tag(news_item, 'img.newsflag.flag')
-        country = country.get('title').lower()
+        country = get_attr(country, 'title').lower()
 
         published_at = get_tag(news_item, 'div.newsrecent')
         comments = get_text(published_at.findNext('div'))

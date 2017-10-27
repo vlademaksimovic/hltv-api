@@ -4,6 +4,7 @@ import logging
 from src.utils import \
     get_tag, \
     get_text, \
+    get_attr, \
     sanity_check_integer, \
     sanity_check_string
 
@@ -46,8 +47,8 @@ def get(requester, limit=None, type_=None):
 def _parse_players(html):
     try:
         basic_info = _get_basic_info(html)
-        origin = get_tag(html, 'img.flag.country').get('title').lower()
-        picture_url = get_tag(html, '.playerPicture > img').get('src')
+        origin = get_attr(get_tag(html, 'img.flag.country'), 'title').lower()
+        picture_url = get_attr(get_tag(html, '.playerPicture > img'), 'src')
 
         return {
             **basic_info,
@@ -62,7 +63,7 @@ def _parse_players(html):
 def _parse_teams(html):
     try:
         basic_info = _get_basic_info(html)
-        picture_url = get_tag(html, 'img.img.logo').get('src')
+        picture_url = get_attr(get_tag(html, 'img.img.logo'), 'src')
 
         return {
             **basic_info,
@@ -118,7 +119,7 @@ def _get_name(html):
 
 
 def _get_profile_url(html):
-    return BASE_URL + get_tag(html, 'a.name').get('href')
+    return BASE_URL + get_attr(get_tag(html, 'a.name'), 'href')
 
 
 def _get_rating(html):

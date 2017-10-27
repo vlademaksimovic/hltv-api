@@ -6,7 +6,8 @@ from src.utils import \
     flatmap, \
     get_text, \
     get_tag, \
-    get_tags
+    get_tags, \
+    get_attr
 
 logger = logging.getLogger(__name__)
 
@@ -170,9 +171,11 @@ def _parse_upcoming_matches(upcoming_matches):
             start_time = get_text(match, 'td.time')
             start_time = start_time.replace('\n', '')
 
-            match_url = BASE_URL + get_tags(
-                upcoming_matches,
-                'a.upcoming-match')[i].get('href')
+            match_url = BASE_URL + get_attr(
+                get_tags(
+                    upcoming_matches,
+                    'a.upcoming-match')[i],
+                'href')
             i += 1
 
             # If placeholder match

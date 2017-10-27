@@ -6,7 +6,8 @@ from src.utils import \
     flatmap, \
     get_text, \
     get_tag, \
-    get_tags
+    get_tags, \
+    get_attr
 
 logger = logging.getLogger(__name__)
 
@@ -51,7 +52,8 @@ def _parse_results(single_day_results):
             team2 = get_text(match, 'div.team2 .team')
             event = get_text(match, 'td.event > span.event-name')
             map_ = get_text(match, 'td.star-cell div.map-text')
-            match_url = BASE_URL + get_tag(match, 'a.a-reset').get('href')
+            match_url = \
+                BASE_URL + get_attr(get_tag(match, 'a.a-reset'), 'href')
 
             _result.update({
                 'date': date,
