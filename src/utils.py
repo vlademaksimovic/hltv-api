@@ -71,6 +71,7 @@ def extract_digits(string):
 
 
 def get_count(list_or_none):
+    """Returns length of list if list exist, otherwise return 0"""
     return len(list_or_none) if list_or_none else 0
 
 
