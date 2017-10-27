@@ -78,6 +78,6 @@ def get_count(list_or_none):
 def get_milliseconds_delta(start, end):
     if not isinstance(start, datetime.datetime) or \
             not isinstance(end, datetime.datetime):
-        raise TypeError
+        raise TypeError('Type must be datetime')
 
     return (end - start).microseconds / 1000
