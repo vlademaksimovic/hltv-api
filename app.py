@@ -49,7 +49,7 @@ def _rankings():
     metrics.log('rankings.count', 'counter', 1)
 
     return jsonify({
-        'ranking': fetched_rankings,
+        'rankings': fetched_rankings,
         'count': len(fetched_rankings),
     })
 

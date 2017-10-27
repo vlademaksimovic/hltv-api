@@ -191,7 +191,7 @@ Returns the current team rankings.
 ```json
 {
   "count": 30,
-  "ranking": [
+  "rankings": [
     {
       "name": "SK",
       "points": 886,
