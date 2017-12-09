@@ -23,8 +23,8 @@ def get(requester, limit=None, offset=None):
         else RESULTS_URL
 
     parsed_content = requester.request(url)
-    all_days_results = parsed_content.find_all(
-        'div', attrs={'class': 'results-sublist'})
+    all_days_results = \
+        get_tags(parsed_content, 'div.results > div.results-holder')
 
     if len(all_days_results) == 0:
         abort(502)  # Bad gateway
