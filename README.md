@@ -275,5 +275,8 @@ If the fetched data could not be parsed correctly this will be returned. This co
 ## 502 Bad Gateway
 This means no data could be retrieved from HLTV and that it's probably not the API's fault. Make sure HLTV is up and try again later.
 
+# Contributions
+Read the [contribution docs](CONTRIBUTING.md) and submit a PR.
+
 # License
 MIT
