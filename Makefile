@@ -1,4 +1,4 @@
-.PHONY: ci build deploy dev install start lint test test-cov
+.PHONY: ci build deploy dev install start lint login test test-cov
 
 # Travis cannot use 'pushd' or 'popd' without SHELL defined
 SHELL := /bin/bash
@@ -9,7 +9,7 @@ ci: install lint unzip test
 build:
 	docker build -t $(IMAGE_NAME):latest .
 
-deploy: lint test build
+deploy: lint test build login
 	heroku container:push web
 
 dev:
@@ -23,6 +23,9 @@ start:
 
 lint:
 	pep8 --format=pylint src test
+
+login:
+	heroku container:login
 
 test:
 	pushd test; pytest; popd
