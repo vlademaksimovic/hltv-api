@@ -11,15 +11,6 @@ from src.utils import \
 
 logger = logging.getLogger(__name__)
 
-handler = logging.FileHandler('matches_live.log')
-handler.setLevel(logging.INFO)
-
-formatter = logging.Formatter(
-    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-
-logger.addHandler(handler)
-
 BASE_URL = 'https://www.hltv.org'
 MATCHES_URL = BASE_URL + '/matches'
 
