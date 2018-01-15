@@ -1,6 +1,7 @@
 import os
 import logging
 import datetime
+from flask_sslify import SSLify
 from flask import Flask, jsonify, make_response, request, send_from_directory
 
 from src.utils import \
@@ -18,6 +19,7 @@ from src import \
 
 STATIC_FOLDER = 'src/resources'
 app = Flask(__name__, static_folder=STATIC_FOLDER)
+sslify = SSLify(app)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
