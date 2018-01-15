@@ -16,7 +16,7 @@ Got suggestions for improvements? Let me know by raising an issue - I'm open for
 - [License](#license)
 
 # API Usage
-**Base URL:** `http://hltv-api.herokuapp.com`
+**Base URL:** `https://www.hltv-api.com`
 
 
 ## Match Results
@@ -59,7 +59,7 @@ _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 ### Example
 ```sh
-$ curl http://hltv-api.herokuapp.com/v1/results?limit=10
+$ curl "https://www.hltv-api.com/v1/results?limit=10"
 ```
 
 
@@ -131,7 +131,7 @@ _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 ### Example
 ```sh
-$ curl http://hltv-api.herokuapp.com/v1/matches?filter=upcoming
+$ curl "https://www.hltv-api.com/v1/matches?filter=upcoming"
 ```
 
 
@@ -172,7 +172,7 @@ _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 ### Example
 ```sh
-$ curl http://hltv-api.herokuapp.com/v1/news?year=2015&month=may
+$ curl "https://www.hltv-api.com/v1/news?year=2015&month=may"
 ```
 
 
@@ -209,7 +209,7 @@ _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 ### Example
 ```sh
-$ curl http://hltv-api.herokuapp.com/v1/rankings?limit=5
+$ curl "https://www.hltv-api.com/v1/rankings?limit=5"
 ```
 
 
@@ -263,7 +263,7 @@ _400_, _500_ or _502_. See the [Error Responses](#error-responses) section.
 
 ### Example
 ```sh
-$ curl http://hltv-api.herokuapp.com/v1/stats?type=teams
+$ curl "https://www.hltv-api.com/v1/stats?type=teams"
 ```
 
 
