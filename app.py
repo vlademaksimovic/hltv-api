@@ -146,6 +146,12 @@ def _index():
     })
 
 
+@app.route('/robots.txt', methods=['GET'])
+@app.route('/sitemap.xml', methods=['GET'])
+def _robots():
+    return send_from_directory(app.static_folder, request.path[1:])
+
+
 if __name__ == '__main__':
     # Flask server is only used during development
     if not is_production:
