@@ -1,7 +1,7 @@
 import os
 import logging
 import datetime
-from flask import Flask, jsonify, make_response, request
+from flask import Flask, jsonify, make_response, request, send_from_directory
 
 from src.utils import \
     get_count, \
@@ -16,7 +16,8 @@ from src import \
     stats, \
     metrics
 
-app = Flask(__name__)
+STATIC_FOLDER = 'src/resources'
+app = Flask(__name__, static_folder=STATIC_FOLDER)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
