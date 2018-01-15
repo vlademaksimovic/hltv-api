@@ -1,7 +1,9 @@
 # HLTV API
 [![Build Status](https://travis-ci.org/simeg/hltv-api.svg?branch=master)](https://travis-ci.org/simeg/hltv-api)
 
-An unofficial API for [HLTV.org](http://HLTV.org).
+An unofficial JSON API for [HLTV.org](http://HLTV.org). See Table of Contents for the available endpoints, return values, parameters and errors.
+
+Got suggestions for improvements? Let me know by raising an issue - I'm open for suggestions.
 
 # Table of Contents
 - [API Usage](#api-usage)
