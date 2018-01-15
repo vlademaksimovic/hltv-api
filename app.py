@@ -141,7 +141,7 @@ def _index():
     return jsonify({
         'author': 'Simon Egersand',
         'author_url': 'https://github.com/simeg',
-        'base_url': 'http://hltv-api.herokuapp.com',
+        'base_url': 'https://www.hltv-api.com',
         'project_name': 'HLTV API',
         'project_url': 'https://github.com/simeg/hltv-api',
         'latest_version': 1,
