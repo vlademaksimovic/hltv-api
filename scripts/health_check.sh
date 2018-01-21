@@ -14,7 +14,7 @@ ENDPOINTS=(
 )
 
 for url in "${ENDPOINTS[@]}"; do
-  full_url="http://hltv-api.herokuapp.com""$url"
+  full_url="https://www.hltv-api.com""$url"
   res=$(curl -fsSI "$full_url" | grep "HTTP/1.1")
   res=${res%$'\r'}  # remove a trailing carriage return if present on the end of the line
   if [ "$res" != "HTTP/1.1 200 OK" ]; then
@@ -22,4 +22,5 @@ for url in "${ENDPOINTS[@]}"; do
   fi
 done
 
+echo "Health check OK!"
 exit 0
